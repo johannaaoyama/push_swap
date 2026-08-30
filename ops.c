@@ -90,7 +90,7 @@ void    ra(t_stack *a)
 {
         t_node    *second_a;
 
-        if (!a)
+        if (!a || a->size < 2)
                 return ;
         second_a = a->head->next;
         second_a->prev = NULL;
