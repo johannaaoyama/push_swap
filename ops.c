@@ -105,7 +105,7 @@ void    rb(t_stack *b)
 {
         t_node    *second_b;
 
-        if (!b)
+        if (!b || b->size < 2)
                 return ;
         second_b = b->head->next;
         second_b->prev = NULL;
