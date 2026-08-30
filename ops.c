@@ -128,7 +128,7 @@ void    rra(t_stack *a)
 {
         t_node    *secondlast_a;
 
-        if (!a)
+        if (!a || a->size < 2)
                 return ;
         secondlast_a = a->tail->prev;
         secondlast_a->next = NULL;
@@ -143,7 +143,7 @@ void    rrb(t_stack *b)
 {
         t_node    *secondlast_b;
 
-        if (!b)
+        if (!b || b->size < 2)
                 return ;
         secondlast_b = b->tail->prev;
         secondlast_b->next = NULL;
