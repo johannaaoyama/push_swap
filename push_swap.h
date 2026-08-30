@@ -28,7 +28,9 @@ typedef struct s_node {
 typedef struct s_stack {
         t_node *head;
         t_node *tail;
-        size_t  size; // no. of elements of the list
+        size_t  size;
+	int	hi;
+	int	lo;
 } t_stack;
 
 // dll (doubly linked lists) functions
