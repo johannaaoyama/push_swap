@@ -75,8 +75,8 @@ int	main(void)
 
 	// Test case: 3, 2, 1 (Worst case scenario)
 	append_node(&a, new_node(3));
-	append_node(&a, new_node(2));
 	append_node(&a, new_node(1));
+	append_node(&a, new_node(2));
 
 	printf("--- BEFORE SORT_THREE ---\n");
 	print_stack(&a, "A");

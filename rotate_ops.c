@@ -6,7 +6,7 @@
 /*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 17:59:21 by keklein           #+#    #+#             */
-/*   Updated: 2026/08/30 18:02:06 by keklein          ###   ########.fr       */
+/*   Updated: 2026/08/30 19:24:10 by keklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void    ra(t_stack *a)
         second_a->prev = NULL;
         a->tail->next = a->head;
         a->head->prev = a->tail;
-        a->head->next = NULL;
         a->tail = a->head;
+        a->head->next = NULL;
         a->head = second_a;
 }
 
@@ -39,8 +39,8 @@ void    rb(t_stack *b)
         second_b->prev = NULL;
         b->tail->next = b->head;
         b->head->prev = b->tail;
-        b->head->next = NULL;
         b->tail = b->head;
+        b->head->next = NULL;
         b->head = second_b;
 }
 
