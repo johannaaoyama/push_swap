@@ -6,7 +6,7 @@
 /*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 14:52:48 by keklein           #+#    #+#             */
-/*   Updated: 2026/08/30 16:53:11 by keklein          ###   ########.fr       */
+/*   Updated: 2026/08/30 18:29:56 by keklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,33 @@ void	selection_sort(t_stack *a, t_stack *b)
 	}
 	while (b->size > 0)
 		pa(a, b);
+}
+
+void	sort_three(t_stack *a)
+{
+	int	top;
+	int	middle;
+	int	bottom;
+
+	if (is_sorted(a))
+		return ;
+	top = a->head->value;
+	middle = a->head->next->value;
+	bottom = a->tail->value;
+	if (top > middle && middle > bottom)
+	{
+		ra(a);
+		sa(a);
+	}
+	else if (top > middle && top > bottom)
+		ra(a);
+	else if (top > middle)
+		sa(a);
+	else if (top < middle && middle > bottom && top > bottom)
+		rra(a);
+	else if (top < middle && middle > bottom && top < bottom)
+	{
+		sa(a);
+		ra(a);
+	}
 }

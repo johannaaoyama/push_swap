@@ -61,7 +61,7 @@ void	print_stack(t_stack *stack, char *name)
 	printf("Stack %s (size %zu): ", name, stack->size);
 	while (current)
 	{
-		printf("[%d | idx:%d] -> ", current->value, current->index);
+		printf("[%d] -> ", current->value);
 		current = current->next;
 	}
 	printf("NULL\n");
@@ -70,38 +70,24 @@ void	print_stack(t_stack *stack, char *name)
 int	main(void)
 {
 	t_stack	a;
-	t_stack	b;
 
 	stack_init(&a);
-	stack_init(&b);
 
-	append_node(&a, new_node(42));
-	append_node(&a, new_node(-100));
-	append_node(&a, new_node(850));
+	// Test case: 3, 2, 1 (Worst case scenario)
 	append_node(&a, new_node(3));
+	append_node(&a, new_node(2));
+	append_node(&a, new_node(1));
 
-	printf("--- INITIAL STACK A ---\n");
+	printf("--- BEFORE SORT_THREE ---\n");
 	print_stack(&a, "A");
 
-	assign_index(&a);
+	// Run 3-element sorter
+	sort_three(&a);
 
-	printf("\n--- AFTER ASSIGN_INDEX ---\n");
+	printf("\n--- AFTER SORT_THREE ---\n");
 	print_stack(&a, "A");
 
 	if (is_sorted(&a))
-	{
-		printf("\nStack is already sorted!\n");
-		return (0);
-	}
-
-	printf("\n--- EXECUTING SELECTION SORT ---\n");
-	selection_sort(&a, &b);
-
-	printf("\n--- FINAL STATE ---\n");
-	print_stack(&a, "A");
-	print_stack(&b, "B");
-
-	if (is_sorted(&a) && b.size == 0)
 		printf("\nRESULT: SUCCESS! Stack A is sorted.\n");
 	else
 		printf("\nRESULT: FAILURE! Stack A is not sorted.\n");

@@ -6,7 +6,7 @@
 /*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:22:02 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/08/30 16:50:36 by keklein          ###   ########.fr       */
+/*   Updated: 2026/08/30 18:12:56 by keklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ void	assign_index(t_stack *a);
 int		get_position(t_stack *a, int target_index);
 int		is_sorted(t_stack *a);
 void	selection_sort(t_stack *a, t_stack *b);
+void	sort_three(t_stack *a);
 
 #endif // PUSH_SWAP_H
