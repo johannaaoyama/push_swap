@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ops.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaoyama <jaoyama@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:22:18 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/08/25 18:22:24 by jaoyama          ###   ########.fr       */
+/*   Updated: 2026/08/30 13:18:41 by keklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,32 +56,45 @@ void    pa(t_stack *a, t_stack *b)
 {
         t_node    *second_b;
 
-        if (!b)
-                return ;
+        if (!a || !b || !b->head || b->size == 0)
+            return ;
         second_b = b->head->next;
-        a->head->prev = b->head;
-        b->head->next = a->head;
-        second_b->prev = NULL;
+		if(a->head)
+			a->head->prev = b->head;
+		else
+			a->tail = b->head;
+		b->head->next = a->head;
         a->head = b->head;
+		if(second_b)
+			second_b->prev = NULL;
+		else
+			b->tail = NULL;
         b->head = second_b;
-        b->size = b->size - 1;
-        a->size = a->size + 1;
+        b->size--;
+        a->size++;
+		
 }
 
 void    pb(t_stack *a, t_stack *b)
 {
         t_node    *second_a;
 
-        if (!a)
-                return ;
-        second_a = a->head->next;
-        b->head->prev = a->head;
-        a->head->next = b->head;
-        second_a->prev = NULL;
+        if (!b || !a || !a->head || a->size == 0)
+            return ;
+		second_a = a->head->next;
+        if (b->head)
+			b->head->prev = a->head;
+		else
+			b->tail = a->head;
+		a->head->next = b->head;
         b->head = a->head;
+		if(second_a)
+        	second_a->prev = NULL;
+		else
+			a->tail = NULL;      
         a->head = second_a;
-        a->size = a->size - 1;
-        b->size = b->size + 1;
+		a->size--;
+        b->size++;
 }
 
 // rotate: shift up all elements by one, the first element becomes the last one.
