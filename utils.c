@@ -6,7 +6,7 @@
 /*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 14:52:48 by keklein           #+#    #+#             */
-/*   Updated: 2026/08/30 18:29:56 by keklein          ###   ########.fr       */
+/*   Updated: 2026/08/30 18:49:14 by keklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	selection_sort(t_stack *a, t_stack *b)
 	while (a->size > 0)
 	{
 		position = get_position(a, target_index);
-		// Step 1: Bring element to top based on pos
 		if (position <= (int)a->size / 2)
 			while (a->head->index != target_index)
 				ra(a);
