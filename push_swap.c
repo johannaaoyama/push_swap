@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaoyama <jaoyama@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:23:04 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/08/25 18:23:12 by jaoyama          ###   ########.fr       */
+/*   Updated: 2026/08/30 15:06:15 by keklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    push_swap(t_struct list_a)
+void    push_swap(t_stack *a)
 {
 
         // 1. If no parameters are specified, the program must not display anything and give the prompt back.
         // 2. check if list_a is valid -> proceed with function below; else return (1);
-        validate_a(list_a); // proceed or return "Error \n"
+        validate_a(a); // proceed or return "Error \n"
 
         // 3. if algo not specified, go adaptive -> decide based on disorder
         {
-                disorder = calc_disorder(list_a);
+                disorder = calc_disorder(a);
                 if (--simple == true || (disorder < 0.2 && --medium == false && --complex == false))
-                        simple(list_a);
+                        simple(a);
                         // return: ft_printf(ops) and send benchmarks to stderr; or Error
                         // benchmarks to stderr
-                        int i == 0;
+                        int i = 0;
                         while (i <= 4)
                                 write(2, arr[i], ft_strlen(arr[i]));
                                 write(2, "\n", 1);
@@ -40,9 +40,9 @@ void    push_swap(t_struct list_a)
                         // if (--bench == true)
                                 ft_printf(stderr);
                 if (––medium == true || (disorder < 0.5 && disorder >= 0.2))
-                        medium(list_a);
+                        medium(a);
                 if (--complex == true || disorder >= 0.5)
-                        complex(list_a);
+                        complex(a);
         }
 
 void    simple(a)

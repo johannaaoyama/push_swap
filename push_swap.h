@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaoyama <jaoyama@student.42berlin.de>      +#+  +:+       +#+        */
+/*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:22:02 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/08/25 18:22:12 by jaoyama          ###   ########.fr       */
+/*   Updated: 2026/08/30 16:50:36 by keklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,11 @@ void    rr(t_stack *a, t_stack *b);
 void    rra(t_stack *a);
 void    rrb(t_stack *b);
 void    rrr(t_stack *a, t_stack *b);
+
+//utils.c
+void	assign_index(t_stack *a);
+int		get_position(t_stack *a, int target_index);
+int		is_sorted(t_stack *a);
+void	selection_sort(t_stack *a, t_stack *b);
 
 #endif // PUSH_SWAP_H
