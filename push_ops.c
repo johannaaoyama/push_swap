@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_ops.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 17:59:28 by keklein           #+#    #+#             */
-/*   Updated: 2026/08/30 18:00:37 by keklein          ###   ########.fr       */
+/*   Updated: 2026/08/31 08:39:38 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void    pa(t_stack *a, t_stack *b)
         b->head = second_b;
         b->size--;
         a->size++;
-		
+		write(1, "pa\n", 3);
 }
 
 void    pb(t_stack *a, t_stack *b)
@@ -56,4 +56,5 @@ void    pb(t_stack *a, t_stack *b)
         a->head = second_a;
 		a->size--;
         b->size++;
+		write(1, "pb\n", 3);
 }

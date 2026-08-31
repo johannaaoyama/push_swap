@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_ops.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 17:59:21 by keklein           #+#    #+#             */
-/*   Updated: 2026/08/30 19:24:10 by keklein          ###   ########.fr       */
+/*   Updated: 2026/08/31 08:38:41 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ void    ra(t_stack *a)
         a->tail->next = a->head;
         a->head->prev = a->tail;
         a->tail = a->head;
-        a->head->next = NULL;
+        a->tail->next = NULL;
         a->head = second_a;
+        write(1, "ra\n", 3);
 }
 
 void    rb(t_stack *b)
@@ -40,12 +41,14 @@ void    rb(t_stack *b)
         b->tail->next = b->head;
         b->head->prev = b->tail;
         b->tail = b->head;
-        b->head->next = NULL;
+        b->tail->next = NULL;
         b->head = second_b;
+        write(1, "rb\n", 3);
 }
 
 void    rr(t_stack *a, t_stack *b)
 {
         ra(a);
         rb(b);
+        write(1, "rr\n", 3);
 }

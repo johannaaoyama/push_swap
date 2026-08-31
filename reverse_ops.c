@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_ops.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 17:59:18 by keklein           #+#    #+#             */
-/*   Updated: 2026/08/30 18:02:26 by keklein          ###   ########.fr       */
+/*   Updated: 2026/08/31 08:39:16 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void    rra(t_stack *a)
         a->tail->prev = NULL;
         a->head = a->tail;
         a->tail = secondlast_a;
+        write(1, "rra\n", 4);
 }
 
 void    rrb(t_stack *b)
@@ -42,10 +43,12 @@ void    rrb(t_stack *b)
         b->tail->prev = NULL;
         b->head = b->tail;
         b->tail = secondlast_b;
+        write(1, "rrb\n", 4);
 }
 
 void    rrr(t_stack *a, t_stack *b)
 {
         rra(a);
         rrb(b);
+        write(1, "rrr\n", 4);
 }
