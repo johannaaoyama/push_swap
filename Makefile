@@ -9,7 +9,9 @@ SRCS        = push_swap.c \
               push_ops.c \
               swap_ops.c \
               rotate_ops.c \
-              reverse_ops.c
+              reverse_ops.c \
+              validation.c \
+              disorder.c
 
 OBJS        = $(SRCS:.c=.o)
 
