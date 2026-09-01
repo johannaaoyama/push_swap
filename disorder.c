@@ -6,24 +6,24 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 08:55:28 by kevin             #+#    #+#             */
-/*   Updated: 2026/09/01 10:22:59 by kevin            ###   ########.fr       */
+/*   Updated: 2026/09/01 13:07:36 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-double	compute_disorder(t_stack *x)
+double	compute_disorder(t_stack *a)
 {
 	long	mistakes;
 	long	pairs;
 	t_node	*cur;
 	t_node	*nxt;
 
-	if (!x || x->size < 2) 
+	if (!a || a->size < 2) 
 		return (0.0);
 	mistakes = 0;
 	pairs = 0;
-	cur = x->head;
+	cur = a->head;
 	while(cur)
 	{
         nxt = cur->next;

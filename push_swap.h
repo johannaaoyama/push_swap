@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:22:02 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/09/01 08:57:08 by kevin            ###   ########.fr       */
+/*   Updated: 2026/09/01 15:06:00 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,25 @@ int	get_position(t_stack *a, int target_index);
 int	is_sorted(t_stack *a);
 void	selection_sort(t_stack *a, t_stack *b);
 void	sort_three(t_stack *a);
+
+//disorder calculation
+double	compute_disorder(t_stack *a);
+
+//helper functions
+int	ft_strcmp(const char *s1, const char *s2);
+int	ft_isdigit(int digit);
+size_t	ft_strlen(const char *s);
+long	ft_atol(const char *str);
+
+//validation
+int	is_flag(char *s1, char *s2);
+int     is_number(const char *str);
+int     has_duplicates(t_stack *a);
+int	is_valid_int(const char *str);
+int	parse_to_stack(int argc, char **argv, t_stack *a);
+// sort_small
+int	get_min_position(t_stack *a);
+void	push_min_to_b(t_stack *a, t_stack *b);
+void	sort_small(t_stack *a, t_stack *b);
 
 #endif // PUSH_SWAP_H

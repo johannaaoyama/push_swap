@@ -1,5 +1,7 @@
 #include "push_swap.h"
 
+/*
+
 int     main(void)
 {
         int     input[] = {1, 2, 3, 4, -12, -5, 0, -7, 725, 12, 94, -42};
@@ -50,7 +52,7 @@ int     main(void)
         stack_clear(&b);
         return (0);
 }
-
+*/
 /*
 #include "push_swap.h"
 #include <stdio.h>
@@ -97,3 +99,66 @@ int	main(void)
 	return (0);
 }
 */
+
+int	main(int argc, char **argv)
+{
+	t_stack	a;
+	t_stack	b;
+	int		strategy;
+	// int		bench;
+	int		i;
+
+	if (argc < 2)
+		return (0);
+	strategy = 0; // 0: adaptive, 1: simple, 2: medium, 3: complex
+	// bench = 0;
+	i = 1;
+	while (i < argc && argv[i][0] == '-' && argv[i][1] == '-')
+	{
+		if (is_flag(argv[i], "--simple") == 0)
+			strategy = 1;
+		else if (is_flag(argv[i], "--medium") == 0)
+			strategy = 2;
+		else if (is_flag(argv[i], "--complex") == 0)
+			strategy = 3;
+		// else if (is_flag(argv[i], "--bench") == 0)
+		// 	bench = 1;
+		i++;
+	}
+
+	stack_init(&a);
+	stack_init(&b);
+
+	if (!parse_to_stack(argc - (i - 1), &argv[i - 1], &a))
+	{
+		// free_stacks(&a, &b);
+		write(2, "Error\n", 6);
+		return (1);
+	}
+
+	if (strategy == 1)
+		selection_sort(&a, &b);
+	else if (strategy == 2)
+	{
+		//medium 
+	}
+        else if (strategy == 3)
+        {
+                //complex
+        }
+        printf("head of A before simple sort is: %i\n", a.head->value);
+        if (!is_sorted(&a))
+	{
+		if (a.size <= 5)
+			sort_small(&a, &b);
+		else if (strategy == 1)
+			selection_sort(&a, &b);
+		else
+			sort_small(&a, &b); 
+	}
+        printf("head of A after simple sort is: %i\n", a.head->value);
+        //write(1, "Algorithm successfully executed!\n", 33);
+	stack_clear(&a);
+        stack_clear(&b);
+	return (0);
+}

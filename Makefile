@@ -3,15 +3,18 @@ NAME        = push_swap
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
 
-SRCS        = push_swap.c \
-              dll.c \
+SRCS        = dll.c \
               utils.c \
               push_ops.c \
               swap_ops.c \
               rotate_ops.c \
               reverse_ops.c \
               validation.c \
-              disorder.c
+              disorder.c \
+              helper_functions.c \
+              sort_small.c \
+              ops_tester_main.c
+              # push_swap.c
 
 OBJS        = $(SRCS:.c=.o)
 
