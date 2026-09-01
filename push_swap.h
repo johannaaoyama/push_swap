@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 // structs node and stack
 
@@ -39,6 +40,7 @@ void    stack_init(t_stack *x);
 t_node    *new_node(int v);
 void    append_node(t_stack *x, t_node *new);
 void    stack_clear(t_stack *x);
+double     compute_disorder(t_stack *a);
 
 // ops (operations) functions
 

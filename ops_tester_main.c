@@ -1,8 +1,8 @@
 #include "push_swap.h"
-/*
+
 int     main(void)
 {
-        int     input[] = {1};
+        int     input[] = {1, 2, 3, 4, -12, -5, 0, -7, 725, 12, 94, -42};
         int     i;
         int     n;
         t_stack   a;
@@ -10,19 +10,20 @@ int     main(void)
         t_node    *new;
 
         i = 0;
-        n = 1;
+        n = 12;
         stack_init(&a);
         while(i < n)
         {
                 new = new_node(input[i]);
                 append_node(&a, new);
-                printf("address of new node: %p\n", new);
+                //printf("address of new node: %p\n", new);
                 //printf("new node: %d\n", new->value);
-                printf("a head: %d\n", a.head->value);
-                printf("a tail: %d\n", a.tail->value);
-                printf("a size: %zu\n", a.size);
+                //printf("a head: %d\n", a.head->value);
+                //printf("a tail: %d\n", a.tail->value);
+                //printf("a size: %zu\n", a.size);
                 i++;
         }
+	printf("disorder of a is %f\n", compute_disorder(&a));
         sa(&a);
         printf("head after swap a: %d\n", a.head->value);
         //rra(&a);
@@ -49,7 +50,8 @@ int     main(void)
         stack_clear(&b);
         return (0);
 }
-*/
+
+/*
 #include "push_swap.h"
 #include <stdio.h>
 
@@ -94,3 +96,4 @@ int	main(void)
 
 	return (0);
 }
+*/

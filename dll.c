@@ -7,6 +7,8 @@ void    stack_init(t_stack *x)
         x->head = NULL;
         x->tail = NULL;
         x->size = 0;
+	x->hi = 0;
+	x->lo = 0;
 }
 
 t_node    *new_node(int v)
@@ -66,4 +68,34 @@ void    stack_clear(t_stack *x)
         x->size = 0;
 	x->hi = 0;
 	x->lo = 0;
+}
+
+// compute disorder
+
+double	compute_disorder(t_stack *x)
+{
+	int	mistakes;
+	int	pairs;
+	t_node	*cur;
+	t_node	*nxt;
+
+	if (!x || !x->head || !x->tail) 
+		return (0);
+	mistakes = 0;
+	pairs = 0;
+	cur = x->head;
+	nxt = x->head->next;
+	while(nxt != NULL)
+	{
+		if (cur->value > nxt->value)
+			mistakes++;
+		pairs++;
+                printf("cur val: %d\n", cur->value);
+                printf("next val: %d\n", nxt->value);
+                printf("pairs: %d\n", pairs);
+                printf("mistakes: %d\n", mistakes);
+		cur = cur->next;
+		nxt = nxt->next;
+	}
+	return ((double)mistakes / (double)pairs);
 }
