@@ -12,14 +12,29 @@
 
 #include "push_swap.h"
 
+/* notes on push_swap program logic:
+
 void    push_swap(t_stack *a)
 {
+	// 1. If no parameters are specified, the program must not display anything and give the prompt back.
+        if (argc == 1)
+                return ; // give back the prompt
 
-        // 1. If no parameters are specified, the program must not display anything and give the prompt back.
-        // 2. check if list_a is valid -> proceed with function below; else return (1);
-        validate_a(a); // proceed or return "Error \n"
+        // 2. parsing & validation:
+        // parse_and_validate(); // proceed or return "Error \n"
+        if argc == 2
+                split string by whitespace, then proceed with "for each element"
 
-        // 3. if algo not specified, go adaptive -> decide based on disorder
+        if argc > 2, go through arguments one by one,
+                check each -> is it whitespace? -> split // this is to catch the edge case input "1" "4" "-5" "1 2 3" "-42"
+                        for each element: is it numeric? -> if yes -> atol -> within INT MIN/MAX? -> if yes -> duplicate? -> if no -> into array & proceed with next element
+
+        // -> we have array int *valid_input
+
+        // 3. create doubly linked list from integer array *valid_input
+        // -> we have a t_stack *a;
+
+        // 4. if algo not specified, go adaptive -> decide based on disorder
         {
                 disorder = calc_disorder(a);
                 if (--simple == true || (disorder < 0.2 && --medium == false && --complex == false))
@@ -44,9 +59,5 @@ void    push_swap(t_stack *a)
                 if (--complex == true || disorder >= 0.5)
                         complex(a);
         }
-
-void    simple(a)
-{
-        // print the ops separated by \n, use write or rather ft_printf here?
-        write(1, ops, sizeof(ops));
 }
+*/
