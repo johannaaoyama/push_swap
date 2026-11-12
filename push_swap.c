@@ -32,14 +32,14 @@ static int	parse_flags(int argc, char **argv, int *strategy)
 
 static void	execute_strategy(t_stack *a, t_stack *b, int strategy)
 {
-	if (strategy == 0) // this means there was no flag, strategy is still 0
-		adaptive(a, b);
-	else if (strategy == 1)
+	//if (strategy == 0) // this means there was no flag, strategy is still 0
+	//	adaptive(a, b);
+	if (strategy == 1)
 		selection_sort(a, b);
 	else if (strategy == 2)
 		chunk_sort(a, b);
-	else if (strategy == 3)
-		complex_sort(a, b);
+	// else if (strategy == 3)
+	//	complex_sort(a, b);
 }
 
 int	main(int argc, char **argv)
