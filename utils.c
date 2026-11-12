@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 14:52:48 by keklein           #+#    #+#             */
-/*   Updated: 2026/08/30 18:49:14 by keklein          ###   ########.fr       */
+/*   Updated: 2026/11/12 19:28:45 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	selection_sort(t_stack *a, t_stack *b)
 	int	target_index;
 	int	position;
 
+	assign_index(a);
 	target_index = 0;
 	while (a->size > 0)
 	{
