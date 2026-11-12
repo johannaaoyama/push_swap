@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:23:04 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/09/02 12:00:01 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/12 12:03:52 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main(int argc, char **argv)
 		selection_sort(&a, &b);
 	else if (strategy == 2)
 	{
-		//medium 
+		chunk_sort(&a, &b);
 	}
         else if (strategy == 3)
         {

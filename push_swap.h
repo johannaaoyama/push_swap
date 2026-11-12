@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:22:02 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/09/01 15:06:00 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/12 12:05:02 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,8 @@ int	parse_to_stack(int argc, char **argv, t_stack *a);
 int	get_min_position(t_stack *a);
 void	push_min_to_b(t_stack *a, t_stack *b);
 void	sort_small(t_stack *a, t_stack *b);
+
+// types of sorting algorithms
+void	chunk_sort(t_stack *a, t_stack *b);
 
 #endif // PUSH_SWAP_H

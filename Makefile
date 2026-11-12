@@ -13,8 +13,9 @@ SRCS        = dll.c \
               disorder.c \
               helper_functions.c \
               sort_small.c \
-              ops_tester_main.c
-              # push_swap.c
+              sort_medium.c \
+              push_swap.c
+              #ops_tester_main.c \
 
 OBJS        = $(SRCS:.c=.o)
 
