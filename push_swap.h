@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:22:02 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/12 12:05:02 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/12 13:45:05 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 // structs node and stack
 
@@ -96,5 +97,10 @@ void	sort_small(t_stack *a, t_stack *b);
 
 // types of sorting algorithms
 void	chunk_sort(t_stack *a, t_stack *b);
+
+// Functions to parse by length
+int	is_valid_int_len(char *str, int len);
+long	ft_atol_len(char *str, int len);
+int     parse_and_validate(t_stack *a, int count, char **args);
 
 #endif // PUSH_SWAP_H

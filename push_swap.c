@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:23:04 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/12 12:30:40 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/12 13:36:33 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int argc, char **argv)
 	i = parse_flags(argc, argv, &strategy);
 	stack_init(&a);
 	stack_init(&b);
-	if (!parse_to_stack(argc - (i - 1), &argv[i - 1], &a))
+	if (!parse_and_validate(&a, argc - i, &argv[i]))
 	{
 		write(2, "Error\n", 6);
 		return (1);

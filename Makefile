@@ -9,6 +9,7 @@ SRCS        = dll.c \
               swap_ops.c \
               rotate_ops.c \
               reverse_ops.c \
+              parse.c \
               validation.c \
               disorder.c \
               helper_functions.c \
