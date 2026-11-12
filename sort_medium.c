@@ -6,13 +6,13 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 12:01:14 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/12 12:03:05 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/12 12:26:19 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_max_position(t_stack *b)
+int	get_max_position(t_stack *b)
 {
 	t_node	*current;
 	int		max_val;
@@ -36,14 +36,10 @@ static int	get_max_position(t_stack *b)
 	return (max_pos);
 }
 
-void	chunk_sort(t_stack *a, t_stack *b)
+static void	push_chunks_to_b(t_stack *a, t_stack *b, int chunk_size)
 {
 	int	i;
-	int	chunk_size;
-	int	max_pos;
 
-	assign_index(a);
-	chunk_size = 15;
 	i = 0;
 	while (a->size > 0)
 	{
@@ -61,15 +57,40 @@ void	chunk_sort(t_stack *a, t_stack *b)
 		else
 			ra(a);
 	}
+}
+
+static void	return_max_to_a(t_stack *a, t_stack *b, int max_pos)
+{
+	if (max_pos <= (int)b->size / 2)
+	{
+		while (max_pos > 0)
+		{
+			rb(b);
+			max_pos--;
+		}
+	}
+	else
+	{
+		while (max_pos < (int)b->size)
+		{
+			rrb(b);
+			max_pos++;
+		}
+	}
+	pa(a, b);
+}
+
+void	chunk_sort(t_stack *a, t_stack *b)
+{
+	int	chunk_size;
+	int	max_pos;
+
+	assign_index(a);
+	chunk_size = 15;
+	push_chunks_to_b(a, b, chunk_size);
 	while (b->size > 0)
 	{
 		max_pos = get_max_position(b);
-		if (max_pos <= (int)b->size / 2)
-			while (b->head != get_node_at(b, max_pos))
-				rb(b);
-		else
-			while (b->head != get_node_at(b, max_pos))
-				rrb(b);
-		pa(a, b);
+		return_max_to_a(a, b, max_pos);
 	}
 }
