@@ -32,17 +32,14 @@ static int	parse_flags(int argc, char **argv, int *strategy)
 
 static void	execute_strategy(t_stack *a, t_stack *b, int strategy)
 {
-	if (strategy == 1)
+	if (strategy == 0) // this means there was no flag, strategy is still 0
+		adaptive(a, b);
+	else if (strategy == 1)
 		selection_sort(a, b);
 	else if (strategy == 2)
 		chunk_sort(a, b);
-	else if (!is_sorted(a))
-	{
-		if (a->size <= 5)
-			sort_small(a, b);
-		else
-			sort_small(a, b);
-	}
+	else if (strategy == 3)
+		complex_sort(a, b);
 }
 
 int	main(int argc, char **argv)
@@ -63,7 +60,8 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	execute_strategy(&a, &b, strategy);
+	if (!is_sorted(&a))
+		execute_strategy(&a, &b, strategy);
 	stack_clear(&a);
 	stack_clear(&b);
 	return (0);
@@ -75,12 +73,21 @@ int	main(int argc, char **argv)
 
 /* notes on push_swap program logic:
 
+edge case 3-5 elements in stack a
+
+else if (!is_sorted(a))
+        {
+                if (a->size <= 5)
+                        sort_small(a, b);
+                else
+                        complex_sort(a, b);
+        }
+
+
+
 void    push_swap(t_stack *a)
 {
 	// 1. If no parameters are specified, the program must not display anything and give the prompt back.
-        if (argc == 1)
-                return ; // give back the prompt
-
         // 2. parsing & validation:
         // parse_and_validate(); // proceed or return "Error \n"
         if argc == 2
