@@ -3,7 +3,8 @@ NAME        = push_swap
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
 
-SRCS        = dll.c \
+SRCS        = adaptive.c \
+		dll.c \
               utils.c \
               push_ops.c \
               swap_ops.c \

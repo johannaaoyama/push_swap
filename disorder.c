@@ -36,7 +36,5 @@ double	compute_disorder(t_stack *a)
         }
         cur = cur->next;
 	}
-    if (pairs == 0)
-		return (0.0);
 	return ((double)mistakes / (double)pairs);
 }

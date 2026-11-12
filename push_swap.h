@@ -97,6 +97,7 @@ void	sort_small(t_stack *a, t_stack *b);
 
 // types of sorting algorithms
 void	chunk_sort(t_stack *a, t_stack *b);
+void	adaptive(t_stack *a, t_stack *b);
 
 // Functions to parse by length
 int	is_valid_int_len(char *str, int len);
