@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 10:25:07 by kevin             #+#    #+#             */
-/*   Updated: 2026/09/01 14:42:29 by kevin            ###   ########.fr       */
+/*   Updated: 2026/09/02 11:06:03 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,28 +69,5 @@ int	is_valid_int(const char *str)
 	num = ft_atol(str);
 	if (num > 2147483647 || num < -2147483648)
 		return (0);
-	return (1);
-}
-
-int	parse_to_stack(int argc, char **argv, t_stack *a)
-{
-	int		i;
-	long	num;
-	t_node	*node;
-
-	i = 1;
-	while (i < argc)
-	{
-		if (!is_valid_int(argv[i]))
-			return (0);
-		num = ft_atol(argv[i]);
-        node = new_node((int)num);
-        if (!node)
-            return (0);
-        append_node(a, node);
-		i++;
-	}
-    if (has_duplicates(a))
-        return (0);
 	return (1);
 }

@@ -142,12 +142,11 @@ int	main(int argc, char **argv)
 	{
 		//medium 
 	}
-        else if (strategy == 3)
-        {
+    else if (strategy == 3)
+    {
                 //complex
-        }
-        printf("head of A before simple sort is: %i\n", a.head->value);
-        if (!is_sorted(&a))
+    }
+    if (!is_sorted(&a))
 	{
 		if (a.size <= 5)
 			sort_small(&a, &b);
@@ -156,9 +155,7 @@ int	main(int argc, char **argv)
 		else
 			sort_small(&a, &b); 
 	}
-        printf("head of A after simple sort is: %i\n", a.head->value);
-        //write(1, "Algorithm successfully executed!\n", 33);
 	stack_clear(&a);
-        stack_clear(&b);
+    stack_clear(&b);
 	return (0);
 }

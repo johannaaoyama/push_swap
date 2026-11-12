@@ -6,11 +6,76 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:23:04 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/09/01 15:29:01 by kevin            ###   ########.fr       */
+/*   Updated: 2026/09/02 12:00:01 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	main(int argc, char **argv)
+{
+	t_stack	a;
+	t_stack	b;
+	int		strategy;
+	// int		bench;
+	int		i;
+
+	if (argc < 2)
+		return (0);
+	strategy = 0; // 0: adaptive, 1: simple, 2: medium, 3: complex
+	// bench = 0;
+	i = 1;
+	while (i < argc && argv[i][0] == '-' && argv[i][1] == '-')
+	{
+		if (is_flag(argv[i], "--simple") == 0)
+			strategy = 1;
+		else if (is_flag(argv[i], "--medium") == 0)
+			strategy = 2;
+		else if (is_flag(argv[i], "--complex") == 0)
+			strategy = 3;
+		// else if (is_flag(argv[i], "--bench") == 0)
+		// 	bench = 1;
+		i++;
+	}
+
+	stack_init(&a);
+	stack_init(&b);
+
+	if (!parse_to_stack(argc - (i - 1), &argv[i - 1], &a))
+	{
+		// free_stacks(&a, &b);
+		write(2, "Error\n", 6);
+		return (1);
+	}
+
+	if (strategy == 1)
+		selection_sort(&a, &b);
+	else if (strategy == 2)
+	{
+		//medium 
+	}
+        else if (strategy == 3)
+        {
+                        //complex
+        }
+        if (!is_sorted(&a))
+	{
+		if (a.size <= 5)
+			sort_small(&a, &b);
+		else if (strategy == 1)
+			selection_sort(&a, &b);
+		else
+			sort_small(&a, &b); 
+	}
+	stack_clear(&a);
+        stack_clear(&b);
+	return (0);
+}
+
+
+
+
+
 
 /* notes on push_swap program logic:
 
