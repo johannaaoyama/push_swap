@@ -6,23 +6,11 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 11:32:42 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/12 13:43:35 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/13 16:11:01 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	size_t	i;
-	
-	if (!s1 || !s2)
-		return (0);
-	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
-		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-}
 
 int	ft_isdigit(int digit)
 {
@@ -109,4 +97,24 @@ long	ft_atol_len(char *str, int len)
 		i++;
 	}
 	return (res * sign);
+}
+
+void	ft_putnbr_fd(int n, int fd)
+{
+	char	c;
+
+	if (n == -2147483648)
+	{
+		write(fd, "-2147483648", 11);
+		return ;
+	}
+	if (n < 0)
+	{
+		write(fd, "-", 1);
+		n = -n;
+	}
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	c = (n % 10) + '0';
+	write(fd, &c, 1);
 }

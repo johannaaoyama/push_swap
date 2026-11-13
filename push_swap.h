@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:22:02 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/12 13:45:05 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/13 16:12:50 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,37 @@ typedef struct s_node {
         struct s_node *next;
 } t_node;
 
+typedef struct s_bench {
+    int     enabled;
+    double  disorder;
+    char    *strategy_name;
+    char    *complexity;
+    int     total_ops;
+    int     sa;
+    int     sb;
+    int     ss;
+    int     pa;
+    int     pb;
+    int     ra;
+    int     rb;
+    int     rr;
+    int     rra;
+    int     rrb;
+    int     rrr;
+} t_bench;
+
 typedef struct s_stack {
         t_node *head;
         t_node *tail;
         size_t  size;
 	int	hi;
 	int	lo;
+        t_bench *bench;
 } t_stack;
+
+// benchmark
+void	init_bench(t_bench *bench);
+void	print_bench(t_bench *bench);
 
 // dll (doubly linked lists) functions
 
@@ -79,10 +103,10 @@ void	sort_three(t_stack *a);
 double	compute_disorder(t_stack *a);
 
 //helper functions
-int	ft_strcmp(const char *s1, const char *s2);
 int	ft_isdigit(int digit);
 size_t	ft_strlen(const char *s);
 long	ft_atol(const char *str);
+void	ft_putnbr_fd(int n, int fd);
 
 //validation
 int	is_flag(char *s1, char *s2);

@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 17:59:28 by keklein           #+#    #+#             */
-/*   Updated: 2026/11/12 09:30:08 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/13 11:37:53 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,30 @@
 
 void    pa(t_stack *a, t_stack *b)
 {
-        t_node    *second_b;
+	t_node    *second_b;
 
-        if (!a || !b || !b->head || b->size == 0)
-            return ;
+    if (!a || !b || !b->head || b->size == 0)
+        return ;
         second_b = b->head->next;
-		if(a->head)
-			a->head->prev = b->head;
-		else
-			a->tail = b->head;
-		b->head->next = a->head;
-        a->head = b->head;
-		if(second_b)
-			second_b->prev = NULL;
-		else
-			b->tail = NULL;
-        b->head = second_b;
-        b->size--;
-        a->size++;
-		write(1, "pa\n", 3);
+	if(a->head)
+		a->head->prev = b->head;
+	else
+		a->tail = b->head;
+	b->head->next = a->head;
+    a->head = b->head;
+	if(second_b)
+		second_b->prev = NULL;
+	else
+		b->tail = NULL;
+    b->head = second_b;
+    b->size--;
+    a->size++;
+	if (a->bench && a->bench->enabled)
+	{
+		a->bench->pa++;
+		a->bench->total_ops++;
+	}
+	write(1, "pa\n", 3);
 }
 
 void    pb(t_stack *a, t_stack *b)
@@ -56,5 +61,10 @@ void    pb(t_stack *a, t_stack *b)
         a->head = second_a;
 		a->size--;
         b->size++;
+	if (b->bench && b->bench->enabled)
+	{
+		b->bench->pb++;
+		b->bench->total_ops++;
+	}
 		write(1, "pb\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 17:59:25 by keklein           #+#    #+#             */
-/*   Updated: 2026/09/01 13:43:50 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/13 15:59:21 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void    sa(t_stack *a)
 	else
 		a->tail = a->head; // if there are only 2 elements, the tail changes
         a->head = second;
+        if (a->bench && a->bench->enabled)
+	{
+		a->bench->sa++;
+		a->bench->total_ops++;
+	}
         write(1, "sa\n", 3);
 }
 
@@ -53,11 +58,21 @@ void    sb(t_stack *b)
 	else
 		b->tail = b->head;
         b->head = second;
+        if (b->bench && b->bench->enabled)
+	{
+		b->bench->sb++;
+		b->bench->total_ops++;
+	}
         write(1, "sb\n", 3);
 }
 
 void    ss(t_stack *a, t_stack *b)
 {
+        if (a->bench && a->bench->enabled)
+	{
+		a->bench->ss++;
+		a->bench->total_ops++;
+	}
         sa(a);
         sb(b);
 }

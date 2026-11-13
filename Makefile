@@ -16,6 +16,7 @@ SRCS        = adaptive.c \
               helper_functions.c \
               sort_small.c \
               sort_medium.c \
+              benchmark.c \
               push_swap.c
               #ops_tester_main.c \
 
