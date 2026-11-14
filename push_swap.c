@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:23:04 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/13 11:40:22 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/14 13:29:34 by johannaaoya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ static int	parse_flags(int argc, char **argv, int *strategy, t_bench *bench)
 			*strategy = 2;
 		else if (is_flag(argv[i], "--complex") == 0)
 			*strategy = 3;
-		else if (is_flag(argv[i], "--bench") == 0)
+		else if (is_flag(argv[i], "--adaptive") == 0)
+			*strategy = 0;
+		if (is_flag(argv[i], "--bench") == 0)
 			bench->enabled = 1;
 		i++;
 	}
@@ -56,7 +58,7 @@ static void	execute_strategy(t_stack *a, t_stack *b, int strategy, t_bench *benc
 	{
 		bench->strategy_name = "Complex (Radix Sort)";
 		bench->complexity = "O(n log n)";
-		// radix_sort(a, b);
+		radix_sort(a, b);
 	}
 }
 
