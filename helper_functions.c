@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 11:32:42 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/13 16:11:01 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/14 13:55:55 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,26 +54,6 @@ long	ft_atol(const char *str)
 		str++;
 	}
 	return (number * sign);
-}
-
-int	is_valid_int_len(char *str, int len)
-{
-	int	i;
-
-	i = 0;
-	if (len <= 0)
-		return (0);
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	if (i == len)
-		return (0);
-	while (i < len)
-	{
-		if (str[i] < '0' || str[i] > '9')
-			return (0);
-		i++;
-	}
-	return (1);
 }
 
 long	ft_atol_len(char *str, int len)

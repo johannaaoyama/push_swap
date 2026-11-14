@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 10:25:07 by kevin             #+#    #+#             */
-/*   Updated: 2026/09/02 11:06:03 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/14 13:55:07 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,25 @@ int	is_valid_int(const char *str)
 	num = ft_atol(str);
 	if (num > 2147483647 || num < -2147483648)
 		return (0);
+	return (1);
+}
+
+int	is_valid_int_len(char *str, int len)
+{
+	int	i;
+
+	i = 0;
+	if (len <= 0)
+		return (0);
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	if (i == len)
+		return (0);
+	while (i < len)
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
+	}
 	return (1);
 }

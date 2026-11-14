@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
+/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:22:02 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/14 12:11:23 by johannaaoya      ###   ########.fr       */
+/*   Updated: 2026/11/14 13:59:53 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int	ft_isdigit(int digit);
 size_t	ft_strlen(const char *s);
 long	ft_atol(const char *str);
 void	ft_putnbr_fd(int n, int fd);
+void	ft_putstr_fd(char *s, int fd);
 
 // validation
 

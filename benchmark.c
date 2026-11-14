@@ -6,26 +6,11 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 11:08:28 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/13 16:10:58 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/14 13:59:55 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-static void	ft_putstr_fd(char *s, int fd)
-{
-	int	i;
-
-	if (!s)
-	{
-		write(fd, "(null)", 6);
-		return ;
-	}
-	i = 0;
-	while (s[i])
-		i++;
-	write(fd, s, i);
-}
 
 static void	print_bench_header(t_bench *bench)
 {
