@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 17:59:28 by keklein           #+#    #+#             */
-/*   Updated: 2026/11/13 11:37:53 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/14 14:58:54 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void    pa(t_stack *a, t_stack *b)
 {
 	t_node    *second_b;
 
-    if (!a || !b || !b->head || b->size == 0)
+	if (!a || !b || !b->head || b->size == 0)
         return ;
         second_b = b->head->next;
 	if(a->head)

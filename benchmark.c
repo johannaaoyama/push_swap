@@ -6,68 +6,62 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 11:08:28 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/14 13:59:55 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/14 14:52:12 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	print_bench_header(t_bench *bench)
+static void	put_str(const char *s)
 {
-	write(2, "--- BENCHMARK REPORT ---\n", 25);
-	write(2, "Strategy: ", 10);
-	ft_putstr_fd(bench->strategy_name, 2);
-	write(2, "\n", 1);
-	write(2, "Complexity Class: ", 18);
-	ft_putstr_fd(bench->complexity, 2);
-	write(2, "\n", 1);
-	write(2, "Initial Disorder: ", 18);
-	ft_putnbr_fd((int)(bench->disorder * 100.0), 2);
-	write(2, "%\n", 2);
-	write(2, "Total Operations: ", 18);
-	ft_putnbr_fd(bench->total_ops, 2);
-	write(2, "\n", 1);
+	if (s)
+		write(2, s, ft_strlen(s));
 }
 
-static void	print_bench_swaps_pushes(t_bench *bench)
+static void	put_percent(double d)
 {
-	write(2, "Ops breakdown -> sa: ", 21);
-	ft_putnbr_fd(bench->sa, 2);
-	write(2, ", sb: ", 6);
-	ft_putnbr_fd(bench->sb, 2);
-	write(2, ", ss: ", 6);
-	ft_putnbr_fd(bench->ss, 2);
-	write(2, "\n", 1);
-	write(2, "               -> pa: ", 21);
-	ft_putnbr_fd(bench->pa, 2);
-	write(2, ", pb: ", 6);
-	ft_putnbr_fd(bench->pb, 2);
-	write(2, "\n", 1);
+	long	h;
+
+	h = (long)(d * 10000.0 + 0.5);
+	ft_putnbr_fd((int)(h / 100), 2);
+	write(2, ".", 1);
+	if (h % 100 < 10)
+		write(2, "0", 1);
+	ft_putnbr_fd((int)(h % 100), 2);
+	write(2, "%", 1);
 }
 
-static void	print_bench_rotates(t_bench *bench)
+static void	put_op(const char *name, int n, char sep)
 {
-	write(2, "               -> ra: ", 21);
-	ft_putnbr_fd(bench->ra, 2);
-	write(2, ", rb: ", 6);
-	ft_putnbr_fd(bench->rb, 2);
-	write(2, ", rr: ", 6);
-	ft_putnbr_fd(bench->rr, 2);
-	write(2, "\n", 1);
-	write(2, "               -> rra: ", 22);
-	ft_putnbr_fd(bench->rra, 2);
-	write(2, ", rrb: ", 7);
-	ft_putnbr_fd(bench->rrb, 2);
-	write(2, ", rrr: ", 7);
-	ft_putnbr_fd(bench->rrr, 2);
-	write(2, "\n------------------------\n", 26);
+	put_str(name);
+	put_str(": ");
+	ft_putnbr_fd(n, 2);
+	write(2, &sep, 1);
 }
 
-void	print_bench(t_bench *bench)
+void	print_bench(t_bench *b)
 {
-	print_bench_header(bench);
-	print_bench_swaps_pushes(bench);
-	print_bench_rotates(bench);
+	put_str("[bench] disorder: ");
+	put_percent(b->disorder);
+	put_str("\n[bench] strategy: ");
+	put_str(b->strategy_name);
+	put_str(" / ");
+	put_str(b->complexity);
+	put_str("\n[bench] total_ops: ");
+	ft_putnbr_fd(b->total_ops, 2);
+	put_str("\n[bench] ");
+	put_op("sa", b->sa, ' ');
+	put_op("sb", b->sb, ' ');
+	put_op("ss", b->ss, ' ');
+	put_op("pa", b->pa, ' ');
+	put_op("pb", b->pb, '\n');
+	put_str("[bench] ");
+	put_op("ra", b->ra, ' ');
+	put_op("rb", b->rb, ' ');
+	put_op("rr", b->rr, ' ');
+	put_op("rra", b->rra, ' ');
+	put_op("rrb", b->rrb, ' ');
+	put_op("rrr", b->rrr, '\n');
 }
 
 void	init_bench(t_bench *bench)
