@@ -3,7 +3,8 @@ NAME        = push_swap
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
 
-SRCS        = adaptive.c \
+SRCS        = 	assign_index.c \
+		adaptive.c \
 		dll.c \
               utils.c \
               push_ops.c \
@@ -18,7 +19,6 @@ SRCS        = adaptive.c \
               sort_medium.c \
               benchmark.c \
               push_swap.c
-              #ops_tester_main.c \
 
 OBJS        = $(SRCS:.c=.o)
 

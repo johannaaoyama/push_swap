@@ -7,8 +7,6 @@ void    stack_init(t_stack *x)
         x->head = NULL;
         x->tail = NULL;
         x->size = 0;
-	x->hi = 0;
-	x->lo = 0;
 }
 
 t_node    *new_node(int v)
@@ -43,10 +41,6 @@ void    append_node(t_stack *x, t_node *new)
                 x->tail = new;
                 x->size = (x->size) + 1;
         }
-	if (new->value < x->lo)
-		x->lo = new->value;
-	if (new->value > x->hi)
-		x->hi = new->value;
 }
 
 // free memory & clear stack
@@ -66,6 +60,4 @@ void    stack_clear(t_stack *x)
         x->head = NULL;
         x->tail = NULL;
         x->size = 0;
-	x->hi = 0;
-	x->lo = 0;
 }

@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+/*
 void	assign_index(t_stack *a)
 {
 	t_node    	*current_node;
@@ -35,6 +36,7 @@ void	assign_index(t_stack *a)
 		current_node = current_node->next;
 	}
 }
+*/
 
 int		is_sorted(t_stack *a)
 {

@@ -50,8 +50,6 @@ typedef struct s_stack {
         t_node *head;
         t_node *tail;
         size_t  size;
-	int	hi;
-	int	lo;
         t_bench *bench;
 } t_stack;
 
@@ -92,8 +90,10 @@ void    rra(t_stack *a);
 void    rrb(t_stack *b);
 void    rrr(t_stack *a, t_stack *b);
 
+// assign_index.c
+void    assign_index(t_stack *a);
+
 //utils.c
-void	assign_index(t_stack *a);
 int	get_position(t_stack *a, int target_index);
 int	is_sorted(t_stack *a);
 void	selection_sort(t_stack *a, t_stack *b);
