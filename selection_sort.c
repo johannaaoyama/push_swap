@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   selection_sort.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #include "push_swap.h"
 
 //how to know whether to use ra or rra
-int		get_position(t_stack *a, int target_index)
+int	get_position(t_stack *a, int target_index)
 {
 	t_node	*current;
 	int		position;
@@ -24,7 +24,7 @@ int		get_position(t_stack *a, int target_index)
 	{
 		if (current->index == target_index)
 		{
-			return position;
+			return (position);
 		}
 		position++;
 		current = current->next;

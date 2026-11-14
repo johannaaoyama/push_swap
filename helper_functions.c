@@ -6,7 +6,7 @@
 /*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 11:32:42 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/14 18:34:32 by johannaaoya      ###   ########.fr       */
+/*   Updated: 2026/11/14 22:33:56 by johannaaoya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ size_t	ft_strlen(const char *s)
 long	ft_atol(const char *str)
 {
 	long	number;
-	int     sign;
+	int		sign;
 
 	sign = 1;
 	number = 0;

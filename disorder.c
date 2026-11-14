@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   disorder.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 08:55:28 by kevin             #+#    #+#             */
-/*   Updated: 2026/09/01 13:07:36 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/14 23:11:27 by johannaaoya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ double	compute_disorder(t_stack *a)
 	t_node	*cur;
 	t_node	*nxt;
 
-	if (!a || a->size < 2) 
+	if (!a || a->size < 2)
 		return (0.0);
 	mistakes = 0;
 	pairs = 0;
 	cur = a->head;
-	while(cur)
+	while (cur)
 	{
-        nxt = cur->next;
-        while(nxt)
-        {
-            pairs++;
-            if (cur->value > nxt->value)
-                mistakes++;
-            nxt = nxt->next;
-        }
-        cur = cur->next;
+		nxt = cur->next;
+		while (nxt)
+		{
+			pairs++;
+			if (cur->value > nxt->value)
+				mistakes++;
+			nxt = nxt->next;
+		}
+		cur = cur->next;
 	}
 	return ((double)mistakes / (double)pairs);
 }

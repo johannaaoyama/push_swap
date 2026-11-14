@@ -6,15 +6,15 @@
 /*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:23:04 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/14 18:20:19 by johannaaoya      ###   ########.fr       */
+/*   Updated: 2026/11/14 23:02:42 by johannaaoya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int		is_sorted(t_stack *a)
+static int	is_sorted(t_stack *a)
 {
-	t_node *current;
+	t_node	*current;
 
 	if (!a || !a->head)
 		return (1);
@@ -22,7 +22,7 @@ static int		is_sorted(t_stack *a)
 	while (current->next)
 	{
 		if (current->value > current->next->value)
-		return (0);
+			return (0);
 		current = current->next;
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 15:15:55 by johannaaoya       #+#    #+#             */
-/*   Updated: 2026/11/14 15:15:58 by johannaaoya      ###   ########.fr       */
+/*   Updated: 2026/11/14 23:08:34 by johannaaoya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void    stack_init(t_stack *x)
         x->size = 0;
 }
 
-t_node    *new_node(int v)
+t_node  *new_node(int v)
 {
-	t_node	*node;
+        t_node  *node;
 
         node = (t_node *)malloc(sizeof(t_node));
         if (!node)
@@ -59,8 +59,8 @@ void    append_node(t_stack *x, t_node *new)
 
 void    stack_clear(t_stack *x)
 {
-        t_node *current;
-        t_node *next;
+        t_node  *current;
+        t_node  *next;
 
         current = x->head;
         while (current)

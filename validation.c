@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   validation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 10:25:07 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/14 13:55:07 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/14 23:05:27 by johannaaoya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_flag(char *s1, char *s2)
+int is_flag(char *s1, char *s2)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (s1[i] && s2[i] && s1[i] == s2[i])
@@ -42,14 +42,14 @@ int is_number(const char *str)
 
 int has_duplicates(t_stack *a)
 {
-    t_node *current_node;
-    t_node *next_node;
+    t_node  *current_node;
+    t_node  *next_node;
 
     current_node = a->head;
-    while(current_node)
+    while (current_node)
     {
         next_node = current_node->next;
-        while(next_node)
+        while (next_node)
         {
             if (current_node->value == next_node->value)
                 return (1);

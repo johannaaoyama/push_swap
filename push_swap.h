@@ -6,7 +6,7 @@
 /*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:22:02 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/14 18:34:23 by johannaaoya      ###   ########.fr       */
+/*   Updated: 2026/11/14 23:01:40 by johannaaoya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ typedef struct s_bench {
 } t_bench;
 
 typedef struct s_span {
-	size_t	lo;
-	size_t	mid;
-	size_t hi;
+        size_t	lo;
+        size_t	mid;
+        size_t  hi;
 } t_span;
 
 typedef struct s_stack {
