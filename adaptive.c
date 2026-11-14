@@ -27,6 +27,6 @@ void	adaptive(t_stack *a, t_stack *b)
                 else if (compute_disorder(a) >= 0.5)
                 {
 			printf("selected complex\n");
-		        chunk_sort(a, b); // change this to complex
+		        radix_sort(a, b); // change this to complex
         	}
 	}

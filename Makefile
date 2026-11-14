@@ -18,6 +18,7 @@ SRCS        = 	assign_index.c \
               sort_small.c \
               sort_medium.c \
               benchmark.c \
+		radix_sort.c \
               push_swap.c
 
 OBJS        = $(SRCS:.c=.o)

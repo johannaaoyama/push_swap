@@ -91,39 +91,49 @@ void    rrb(t_stack *b);
 void    rrr(t_stack *a, t_stack *b);
 
 // assign_index.c
+
 void    assign_index(t_stack *a);
 
-//utils.c
+// utils.c
+
 int	get_position(t_stack *a, int target_index);
 int	is_sorted(t_stack *a);
 void	selection_sort(t_stack *a, t_stack *b);
 void	sort_three(t_stack *a);
 
-//disorder calculation
+// disorder calculation
+
 double	compute_disorder(t_stack *a);
 
-//helper functions
+// helper functions
+
 int	ft_isdigit(int digit);
 size_t	ft_strlen(const char *s);
 long	ft_atol(const char *str);
 void	ft_putnbr_fd(int n, int fd);
 
-//validation
+// validation
+
 int	is_flag(char *s1, char *s2);
 int     is_number(const char *str);
 int     has_duplicates(t_stack *a);
 int	is_valid_int(const char *str);
 int	parse_to_stack(int argc, char **argv, t_stack *a);
+
 // sort_small
+
 int	get_min_position(t_stack *a);
 void	push_min_to_b(t_stack *a, t_stack *b);
 void	sort_small(t_stack *a, t_stack *b);
 
 // types of sorting algorithms
+
 void	chunk_sort(t_stack *a, t_stack *b);
 void	adaptive(t_stack *a, t_stack *b);
+void	radix_sort(t_stack *a, t_stack *b);
 
 // Functions to parse by length
+
 int	is_valid_int_len(char *str, int len);
 long	ft_atol_len(char *str, int len);
 int     parse_and_validate(t_stack *a, int count, char **args);
