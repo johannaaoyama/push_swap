@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:22:02 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/14 14:16:29 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/14 17:39:13 by johannaaoya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,55 +58,42 @@ void	init_bench(t_bench *bench);
 void	print_bench(t_bench *bench);
 
 // dll (doubly linked lists) functions
-
 void    stack_init(t_stack *x);
 t_node    *new_node(int v);
 void    append_node(t_stack *x, t_node *new);
 void    stack_clear(t_stack *x);
+
+// disorder.c
 double     compute_disorder(t_stack *a);
 
 // ops (operations) functions
 
 // swap the first two nodes
-
 void    sa(t_stack *a);
 void    sb(t_stack *b);
-void    swap(t_stack *a, t_stack *b);
 
 // push element at top of b & put it at the top of a, do nothing if b is empty. and vice versa.
-
 void    pa(t_stack *a, t_stack *b);
 void    pb(t_stack *a, t_stack *b);
 
 // rotate: shift up all elements by one, the first element becomes the last one.
-
 void    ra(t_stack *a);
 void    rb(t_stack *b);
 void    rr(t_stack *a, t_stack *b);
 
 // reverse rotate: shift down all elements by one. last element becomes the first one.
-
 void    rra(t_stack *a);
 void    rrb(t_stack *b);
 void    rrr(t_stack *a, t_stack *b);
 
 // assign_index.c
-
 void    assign_index(t_stack *a);
 
-// utils.c
-
+// selection_sort.c
 int	get_position(t_stack *a, int target_index);
-int	is_sorted(t_stack *a);
 void	selection_sort(t_stack *a, t_stack *b);
-void	sort_three(t_stack *a);
-
-// disorder calculation
-
-double	compute_disorder(t_stack *a);
 
 // helper functions
-
 int	ft_isdigit(int digit);
 size_t	ft_strlen(const char *s);
 long	ft_atol(const char *str);
@@ -114,27 +101,17 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
 
 // validation
-
 int	is_flag(char *s1, char *s2);
 int     is_number(const char *str);
 int     has_duplicates(t_stack *a);
 int	is_valid_int(const char *str);
-int	parse_to_stack(int argc, char **argv, t_stack *a);
 
-// sort_small
-
-int	get_min_position(t_stack *a);
-void	push_min_to_b(t_stack *a, t_stack *b);
-void	sort_small(t_stack *a, t_stack *b);
-
-// types of sorting algorithms
-
+// sorting algorithms
 void	chunk_sort(t_stack *a, t_stack *b);
 void	adaptive(t_stack *a, t_stack *b, t_bench *bench);
 void	radix_sort(t_stack *a, t_stack *b);
 
 // Functions to parse by length
-
 int	is_valid_int_len(char *str, int len);
 long	ft_atol_len(char *str, int len);
 int     parse_and_validate(t_stack *a, int count, char **args);

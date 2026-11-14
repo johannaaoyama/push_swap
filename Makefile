@@ -3,10 +3,10 @@ NAME        = push_swap
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
 
-SRCS        = 	assign_index.c \
+SRCS        = assign_index.c \
 		adaptive.c \
 		dll.c \
-              utils.c \
+              selection_sort.c \
               push_ops.c \
               swap_ops.c \
               rotate_ops.c \
@@ -15,7 +15,6 @@ SRCS        = 	assign_index.c \
               validation.c \
               disorder.c \
               helper_functions.c \
-              sort_small.c \
               sort_medium.c \
               benchmark.c \
 		radix_sort.c \

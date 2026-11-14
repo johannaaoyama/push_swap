@@ -3,56 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/30 14:52:48 by keklein           #+#    #+#             */
-/*   Updated: 2026/11/12 19:28:45 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/14 17:35:11 by johannaaoya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-/*
-void	assign_index(t_stack *a)
-{
-	t_node    	*current_node;
-	t_node    	*next_node;
-	int			i;
-
-	if (!a || !a->head)
-		return ;
-	current_node = a->head;
-	while (current_node)
-	{
-		i = 0;
-		next_node = a->head;
-		while(next_node)
-		{
-			if (current_node->value > next_node->value)
-				i++;
-			next_node = next_node->next;
-		}
-		current_node->index = i;
-		current_node = current_node->next;
-	}
-}
-*/
-
-int		is_sorted(t_stack *a)
-{
-	t_node *current;
-
-	if (!a || !a->head)
-		return (1);
-	current = a->head;
-	while (current->next)
-	{
-		if (current->value > current->next->value)
-		return (0);
-		current = current->next;
-	}
-	return (1);
-}
 
 //how to know whether to use ra or rra
 int		get_position(t_stack *a, int target_index)
@@ -95,33 +53,4 @@ void	selection_sort(t_stack *a, t_stack *b)
 	}
 	while (b->size > 0)
 		pa(a, b);
-}
-
-void	sort_three(t_stack *a)
-{
-	int	top;
-	int	middle;
-	int	bottom;
-
-	if (is_sorted(a))
-		return ;
-	top = a->head->value;
-	middle = a->head->next->value;
-	bottom = a->tail->value;
-	if (top > middle && middle > bottom)
-	{
-		ra(a);
-		sa(a);
-	}
-	else if (top > middle && top > bottom)
-		ra(a);
-	else if (top > middle)
-		sa(a);
-	else if (top < middle && middle > bottom && top > bottom)
-		rra(a);
-	else if (top < middle && middle > bottom && top < bottom)
-	{
-		sa(a);
-		ra(a);
-	}
 }

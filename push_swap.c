@@ -6,11 +6,27 @@
 /*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:23:04 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/14 15:25:07 by johannaaoya      ###   ########.fr       */
+/*   Updated: 2026/11/14 17:38:17 by johannaaoya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int		is_sorted(t_stack *a)
+{
+	t_node *current;
+
+	if (!a || !a->head)
+		return (1);
+	current = a->head;
+	while (current->next)
+	{
+		if (current->value > current->next->value)
+		return (0);
+		current = current->next;
+	}
+	return (1);
+}
 
 static int	parse_flags(int argc, char **argv, int *strategy, t_bench *bench)
 {
@@ -39,7 +55,6 @@ static void	execute_strategy(t_stack *a, t_stack *b, int strategy, t_bench *benc
 	if (strategy == 0)
 	{
 		bench->strategy_name = "Adaptive";
-		// bench->complexity = "O(n sqrt(n))";
 		adaptive(a, b, bench);
 	}
 	else if (strategy == 1)
