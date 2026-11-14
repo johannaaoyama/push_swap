@@ -6,7 +6,7 @@
 /*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 12:22:28 by johannaaoya       #+#    #+#             */
-/*   Updated: 2026/11/14 12:59:14 by johannaaoya      ###   ########.fr       */
+/*   Updated: 2026/11/14 15:16:44 by johannaaoya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	radix_sort(t_stack *a, t_stack *b)
 	size_t	n;
 	size_t	i;
 
-	assign_index(a);	// replace with O(n log n) ranking first
+	assign_index(a);
 	bit = 0;
 	while ((a->size > 0) && (1 << bit) < (int)a->size)
 	{

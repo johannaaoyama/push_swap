@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dll.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/11/14 15:15:55 by johannaaoya       #+#    #+#             */
+/*   Updated: 2026/11/14 15:15:58 by johannaaoya      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 // initiate stack, initiate & allocate memory for node, populate nodes with integers given as input, append nodes to the stack, then free memory that was allocated for nodes to clear the stack
