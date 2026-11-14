@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/12 12:01:14 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/12 13:23:24 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/14 15:28:14 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,12 @@ void	chunk_sort(t_stack *a, t_stack *b)
 	int	max_pos;
 
 	assign_index(a);
-	chunk_size = 15;
+	chunk_size = 1;
+	while ((chunk_size + 1) * (chunk_size + 1) <= (int)a->size)
+		chunk_size++;
+	chunk_size = chunk_size * 14 / 10;
+	if (chunk_size < 1)
+		chunk_size = 1;
 	push_chunks_to_b(a, b, chunk_size);
 	while (b->size > 0)
 	{
