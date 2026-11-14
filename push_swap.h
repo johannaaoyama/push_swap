@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:22:02 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/14 13:59:53 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/14 14:16:29 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void	sort_small(t_stack *a, t_stack *b);
 // types of sorting algorithms
 
 void	chunk_sort(t_stack *a, t_stack *b);
-void	adaptive(t_stack *a, t_stack *b);
+void	adaptive(t_stack *a, t_stack *b, t_bench *bench);
 void	radix_sort(t_stack *a, t_stack *b);
 
 // Functions to parse by length

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
+/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:23:04 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/14 13:29:34 by johannaaoya      ###   ########.fr       */
+/*   Updated: 2026/11/14 14:17:01 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static void	execute_strategy(t_stack *a, t_stack *b, int strategy, t_bench *benc
 	if (strategy == 0)
 	{
 		bench->strategy_name = "Adaptive";
-		bench->complexity = "Adaptive / O(n sqrt(n))";
-		adaptive(a, b);
+		// bench->complexity = "O(n sqrt(n))";
+		adaptive(a, b, bench);
 	}
 	else if (strategy == 1)
 	{
