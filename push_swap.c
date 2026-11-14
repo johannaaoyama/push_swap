@@ -6,7 +6,7 @@
 /*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:23:04 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/14 17:38:17 by johannaaoya      ###   ########.fr       */
+/*   Updated: 2026/11/14 18:20:19 by johannaaoya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,26 @@ static int	parse_flags(int argc, char **argv, int *strategy, t_bench *bench)
 	return (i);
 }
 
-static void	execute_strategy(t_stack *a, t_stack *b, int strategy, t_bench *bench)
+static void	execute_strategy(t_stack *a, t_stack *b, int strat, t_bench *bench)
 {
-	if (strategy == 0)
+	if (strat == 0)
 	{
 		bench->strategy_name = "Adaptive";
 		adaptive(a, b, bench);
 	}
-	else if (strategy == 1)
+	else if (strat == 1)
 	{
 		bench->strategy_name = "Simple (Selection Sort)";
 		bench->complexity = "O(n^2)";
 		selection_sort(a, b);
 	}
-	else if (strategy == 2)
+	else if (strat == 2)
 	{
 		bench->strategy_name = "Medium (Chunk Sort)";
 		bench->complexity = "O(n sqrt(n))";
 		chunk_sort(a, b);
 	}
-	else if (strategy == 3)
+	else if (strat == 3)
 	{
 		bench->strategy_name = "Complex (Radix Sort)";
 		bench->complexity = "O(n log n)";
@@ -94,10 +94,7 @@ int	main(int argc, char **argv)
 	a.bench = &bench;
 	b.bench = &bench;
 	if (!parse_and_validate(&a, argc - i, &argv[i]))
-	{
-		write(2, "Error\n", 6);
-		return (1);
-	}
+		return (write(2, "Error\n", 6), 1);
 	bench.disorder = compute_disorder(&a);
 	if (!is_sorted(&a))
 		execute_strategy(&a, &b, strategy, &bench);

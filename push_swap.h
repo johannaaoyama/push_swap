@@ -6,14 +6,13 @@
 /*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:22:02 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/14 17:39:13 by johannaaoya      ###   ########.fr       */
+/*   Updated: 2026/11/14 18:34:23 by johannaaoya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
@@ -46,6 +45,12 @@ typedef struct s_bench {
     int     rrr;
 } t_bench;
 
+typedef struct s_span {
+	size_t	lo;
+	size_t	mid;
+	size_t hi;
+} t_span;
+
 typedef struct s_stack {
         t_node *head;
         t_node *tail;
@@ -54,17 +59,17 @@ typedef struct s_stack {
 } t_stack;
 
 // benchmark
-void	init_bench(t_bench *bench);
-void	print_bench(t_bench *bench);
+void    init_bench(t_bench *bench);
+void    print_bench(t_bench *bench);
 
 // dll (doubly linked lists) functions
 void    stack_init(t_stack *x);
-t_node    *new_node(int v);
+t_node  *new_node(int v);
 void    append_node(t_stack *x, t_node *new);
 void    stack_clear(t_stack *x);
 
 // disorder.c
-double     compute_disorder(t_stack *a);
+double  compute_disorder(t_stack *a);
 
 // ops (operations) functions
 
@@ -89,31 +94,31 @@ void    rrr(t_stack *a, t_stack *b);
 // assign_index.c
 void    assign_index(t_stack *a);
 
-// selection_sort.c
-int	get_position(t_stack *a, int target_index);
-void	selection_sort(t_stack *a, t_stack *b);
-
 // helper functions
-int	ft_isdigit(int digit);
-size_t	ft_strlen(const char *s);
-long	ft_atol(const char *str);
-void	ft_putnbr_fd(int n, int fd);
-void	ft_putstr_fd(char *s, int fd);
+int     ft_isdigit(int digit);
+size_t  ft_strlen(const char *s);
+long    ft_atol(const char *str);
+long    ft_atol_len(char *str, int len);
+void    ft_putnbr_fd(int n, int fd);
 
 // validation
-int	is_flag(char *s1, char *s2);
+int     is_flag(char *s1, char *s2);
 int     is_number(const char *str);
 int     has_duplicates(t_stack *a);
-int	is_valid_int(const char *str);
+int     is_valid_int(const char *str);
+int     is_valid_int_len(char *str, int len);
 
 // sorting algorithms
-void	chunk_sort(t_stack *a, t_stack *b);
-void	adaptive(t_stack *a, t_stack *b, t_bench *bench);
-void	radix_sort(t_stack *a, t_stack *b);
+void    chunk_sort(t_stack *a, t_stack *b);
+void    adaptive(t_stack *a, t_stack *b, t_bench *bench);
+void    radix_sort(t_stack *a, t_stack *b);
+
+// selection_sort.c
+int     get_position(t_stack *a, int target_index);
+void    selection_sort(t_stack *a, t_stack *b);
 
 // Functions to parse by length
-int	is_valid_int_len(char *str, int len);
-long	ft_atol_len(char *str, int len);
 int     parse_and_validate(t_stack *a, int count, char **args);
+void    ft_putstr_fd(char *s, int fd);
 
 #endif // PUSH_SWAP_H

@@ -6,17 +6,11 @@
 /*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 12:10:30 by johannaaoya       #+#    #+#             */
-/*   Updated: 2026/11/14 12:10:38 by johannaaoya      ###   ########.fr       */
+/*   Updated: 2026/11/14 18:10:21 by johannaaoya      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-typedef struct s_span {
-	size_t	lo;
-	size_t	mid;
-	size_t hi;
-}	t_span;
 
 static void	merge(int *arr, int *tmp, t_span s)
 {
@@ -53,7 +47,7 @@ static void	merge_sort(int *arr, int *tmp, size_t lo, size_t hi)
 	if (hi - lo < 2)
 		return ;
 	s.lo = lo;
-	s.mid = lo + (hi - lo)/2;
+	s.mid = lo + (hi - lo) / 2;
 	s.hi = hi;
 	merge_sort(arr, tmp, s.lo, s.mid);
 	merge_sort(arr, tmp, s.mid, s.hi);
@@ -63,7 +57,7 @@ static void	merge_sort(int *arr, int *tmp, size_t lo, size_t hi)
 static int	*sort_array(t_stack *a)
 {
 	int	*sorted;
-	int 	*tmp;
+	int	*tmp;
 	t_node	*cur;
 	size_t	i;
 
@@ -77,7 +71,7 @@ static int	*sort_array(t_stack *a)
 	}
 	i = 0;
 	cur = a->head;
-	while(cur)
+	while (cur)
 	{
 		sorted[i++] = cur->value;
 		cur = cur->next;
@@ -98,7 +92,7 @@ static void	assign_ranks(t_stack *a, const int *sorted)
 	while(cur)
 	{
 		lo = 0;
-		hi = a-> size;
+		hi = a->size;
 		while (lo < hi)
 		{
 			mid = lo + (hi - lo) / 2;
@@ -120,7 +114,7 @@ void	assign_index(t_stack *a)
 		return ;
 	sorted = sort_array(a);
 	if (!sorted)
-	 	return ;
+		return ;
 	assign_ranks(a, sorted);
 	free(sorted);
 }
