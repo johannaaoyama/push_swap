@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by <jaoyama> and <keklein>.*
+*This project has been created as part of the 42 curriculum by jaoyama and keklein.*
 
 # push_swap
 
@@ -138,20 +138,6 @@ Binary LSD radix sort on the ranks. For `bit = 0, 1, …, ⌈log₂ n⌉ - 1`: g
 - **Space:** O(1) beyond the stacks and the O(n) ranking.
 - **Input independence:** since the ranks of any input are always a permutation of `0 … n-1`, the operation count depends only on `n` (always 1084 for n=100, 6784 for n=500).
 - **Why radix:** the cost does not depend on the initial order, and for the sizes of the project it is the most predictable O(n log n) option with two stacks.
-
-### Small inputs: `sort_small` (n ≤ 5)
-
-Push the smallest elements to `b` until 3 remain in `a` (each time rotating the minimum to the top by the shorter way), sort the remaining 3 with a case analysis (`sort_three`, at most 2 operations), then `pa` everything back. It is a selection-sort variant, so its cost class is O(n²), with n ≤ 5 it is a constant.
-
-Why we need it: the general strategies are too expensive for tiny inputs. Checking **every permutation** of 2 to 5 elements, the worst cases are:
-
-| n | `sort_small` | radix | `--simple` |
-|---|--------------|-------|------------|
-| 3 | 2 | 10 | 8 |
-| 4 | 6 | 12 | 12 |
-| 5 | 10 | 25 | 16 |
-
-It is used **only** by `--adaptive`. The forced flags (`--simple`, `--medium`, `--complex`) always run their own algorithm, because the subject requires every selector to work regardless of input size.
 
 ### Adaptive — thresholds, techniques, bounds
 

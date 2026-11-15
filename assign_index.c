@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assign_index.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
+/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 12:10:30 by johannaaoya       #+#    #+#             */
-/*   Updated: 2026/11/14 18:10:21 by johannaaoya      ###   ########.fr       */
+/*   Updated: 2026/11/15 17:57:13 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	merge(int *arr, int *tmp, t_span s)
 
 static void	merge_sort(int *arr, int *tmp, size_t lo, size_t hi)
 {
-	t_span 	s;
+	t_span s;
 
 	if (hi - lo < 2)
 		return ;
@@ -56,8 +56,8 @@ static void	merge_sort(int *arr, int *tmp, size_t lo, size_t hi)
 
 static int	*sort_array(t_stack *a)
 {
-	int	*sorted;
-	int	*tmp;
+	int		*sorted;
+	int		*tmp;
 	t_node	*cur;
 	size_t	i;
 
@@ -89,7 +89,7 @@ static void	assign_ranks(t_stack *a, const int *sorted)
 	size_t	hi;
 
 	cur = a->head;
-	while(cur)
+	while (cur)
 	{
 		lo = 0;
 		hi = a->size;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
+/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:23:04 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/14 23:02:42 by johannaaoya      ###   ########.fr       */
+/*   Updated: 2026/11/15 17:43:28 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static int	parse_flags(int argc, char **argv, int *strategy, t_bench *bench)
 			*strategy = 0;
 		else if (is_flag(argv[i], "--bench") == 0)
 			bench->enabled = 1;
+		else
+			return (-1);
 		i++;
 	}
 	return (i);
@@ -93,7 +95,7 @@ int	main(int argc, char **argv)
 	stack_init(&b);
 	a.bench = &bench;
 	b.bench = &bench;
-	if (!parse_and_validate(&a, argc - i, &argv[i]))
+	if (i < 0 || !parse_and_validate(&a, argc - i, &argv[i]))
 		return (write(2, "Error\n", 6), 1);
 	bench.disorder = compute_disorder(&a);
 	if (!is_sorted(&a))
