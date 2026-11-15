@@ -145,7 +145,6 @@ The adaptive strategy measures the disorder before any move and picks the method
 
 | Regime | Condition | Method | Operations (upper bound) |
 |--------|-----------|--------|--------------------------|
-| Tiny | n ≤ 5 | `sort_small` | constant (≤ 10) |
 | Low | disorder < 0.2 | Selection sort | O(n²) |
 | Medium | 0.2 ≤ disorder < 0.5 | Chunk sort | O(n√n) |
 | High | disorder ≥ 0.5 | LSD radix sort | O(n log n) |
@@ -222,8 +221,6 @@ ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
 | `swap_ops.c`, `push_ops.c`, `rotate_ops.c`, `reverse_ops.c` | the 11 operations (print and count each one) |
 | `disorder.c` | disorder metric |
 | `assign_index.c` | rank normalization (merge sort + binary search) |
-| `utils.c` | selection sort (simple strategy), `sort_three` |
-| `sort_small.c` | n ≤ 5 case |
 | `sort_medium.c` | chunk sort (medium strategy) |
 | `radix_sort.c` | LSD radix sort (complex strategy) |
 | `adaptive.c` | regime selection and adaptive strategy |
@@ -234,7 +231,7 @@ ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
 Based on the repository history; adjust it if you want to be more precise.
 
 - **jaoyama:** doubly linked list (`dll.c`); rank normalization with merge sort (`assign_index.c`); radix sort (`radix_sort.c`); adaptive strategy and disorder-based regime selection (`adaptive.c`); project structure of `push_swap.c` / `push_swap.h`; README.
-- **keklein:** the 11 operations (`swap_ops.c`, `push_ops.c`, `rotate_ops.c`, `reverse_ops.c`); argument parsing and validation (`parse.c`, `validation.c`, `helper_functions.c`); selection sort and `sort_small`; chunk sort (`sort_medium.c`); disorder metric; benchmark mode (`benchmark.c`); Makefile.
+- **keklein:** the 11 operations (`swap_ops.c`, `push_ops.c`, `rotate_ops.c`, `reverse_ops.c`); argument parsing and validation (`parse.c`, `validation.c`, `helper_functions.c`); selection sort; chunk sort (`sort_medium.c`); disorder metric; benchmark mode (`benchmark.c`); Makefile.
 - **Both:** `push_swap.c` / `push_swap.h`, testing, norm cleanup, algorithm review. Both of us reviewed and can explain every algorithm in this repository.
 
 > **TODO:** confirm this split is accurate for both of you.
