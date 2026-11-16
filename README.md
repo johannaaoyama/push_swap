@@ -214,7 +214,7 @@ ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
 | `assign_index.c` | rank normalization (merge sort + binary search) |
 | `sort_medium.c` | chunk sort (medium strategy) |
 | `radix_sort.c` | LSD radix sort (complex strategy) |
-| `disorder.c` | disorder metric and osrterd check |
+| `disorder.c` | disorder metric and sorted check |
 | `benchmark.c` | `--bench` counters and report |
 
 ## Contributions
