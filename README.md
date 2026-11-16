@@ -211,7 +211,6 @@ ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
 | `dll.c` | doubly linked list used for both stacks |
 | `parse.c`, `validation.c`, `helper_functions.c` | argument parsing and validation, small helpers |
 | `swap_ops.c`, `push_ops.c`, `rotate_ops.c`, `reverse_ops.c` | the 11 operations (print and count each one) |
-| `disorder.c` | disorder metric |
 | `assign_index.c` | rank normalization (merge sort + binary search) |
 | `sort_medium.c` | chunk sort (medium strategy) |
 | `radix_sort.c` | LSD radix sort (complex strategy) |
@@ -220,9 +219,7 @@ ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
 
 ## Contributions
 
-Based on the repository history; adjust it if you want to be more precise.
-
-- **jaoyama:** doubly linked list (`dll.c`); rank normalization with merge sort (`assign_index.c`); radix sort (`radix_sort.c`); adaptive strategy and disorder-based regime selection (`herlper_functions.c`); project structure of `push_swap.c` / `push_swap.h`; README.
+- **jaoyama:** doubly linked list (`dll.c`); rank normalization with merge sort (`assign_index.c`); radix sort (`radix_sort.c`); adaptive strategy and disorder-based regime selection (`helper_functions.c`); project structure of `push_swap.c` / `push_swap.h`; README.
 - **keklein:** the 11 operations (`swap_ops.c`, `push_ops.c`, `rotate_ops.c`, `reverse_ops.c`); argument parsing and validation (`parse.c`, `validation.c`, `helper_functions.c`); selection sort; chunk sort (`sort_medium.c`); disorder metric; benchmark mode (`benchmark.c`); Makefile.
 - **Both:** `push_swap.c` / `push_swap.h`, testing, norm cleanup, algorithm review. Both of us reviewed and can explain every algorithm in this repository.
 
