@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 11:05:25 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/16 16:56:30 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/16 19:15:33 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	add_token(char *start, int len, t_stack *a)
 	long	num;
 	t_node	*node;
 
-	if (!is_valid_int_len(start, len))
+	if (!is_valid_int_len(start, len) || len > 11)
 		return (0);
 	num = ft_atol_len(start, len);
 	if (num < INT_MIN || num > INT_MAX)
