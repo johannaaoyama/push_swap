@@ -6,26 +6,18 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:23:04 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/15 17:43:28 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/16 16:42:59 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	is_sorted(t_stack *a)
+static void	set_strategy(t_bench *bench, int flag)
 {
-	t_node	*current;
-
-	if (!a || !a->head)
-		return (1);
-	current = a->head;
-	while (current->next)
-	{
-		if (current->value > current->next->value)
-			return (0);
-		current = current->next;
-	}
-	return (1);
+	bench->adaptive = (flag == 0);
+	bench->strategy = flag;
+	if (flag == 0)
+		bench->strategy = pick_strategy(bench->disorder);
 }
 
 static int	parse_flags(int argc, char **argv, int *strategy, t_bench *bench)
@@ -52,31 +44,14 @@ static int	parse_flags(int argc, char **argv, int *strategy, t_bench *bench)
 	return (i);
 }
 
-static void	execute_strategy(t_stack *a, t_stack *b, int strat, t_bench *bench)
+static void	execute_strategy(t_stack *a, t_stack *b, t_bench *bench)
 {
-	if (strat == 0)
-	{
-		bench->strategy_name = "Adaptive";
-		adaptive(a, b, bench);
-	}
-	else if (strat == 1)
-	{
-		bench->strategy_name = "Simple (Selection Sort)";
-		bench->complexity = "O(n^2)";
+	if (bench->strategy == 1)
 		selection_sort(a, b);
-	}
-	else if (strat == 2)
-	{
-		bench->strategy_name = "Medium (Chunk Sort)";
-		bench->complexity = "O(n sqrt(n))";
+	else if (bench->strategy == 2)
 		chunk_sort(a, b);
-	}
-	else if (strat == 3)
-	{
-		bench->strategy_name = "Complex (Radix Sort)";
-		bench->complexity = "O(n log n)";
+	else
 		radix_sort(a, b);
-	}
 }
 
 int	main(int argc, char **argv)
@@ -98,8 +73,9 @@ int	main(int argc, char **argv)
 	if (i < 0 || !parse_and_validate(&a, argc - i, &argv[i]))
 		return (write(2, "Error\n", 6), 1);
 	bench.disorder = compute_disorder(&a);
+	set_strategy(&bench, strategy);
 	if (!is_sorted(&a))
-		execute_strategy(&a, &b, strategy, &bench);
+		execute_strategy(&a, &b, &bench);
 	if (bench.enabled)
 		print_bench(&bench);
 	stack_clear(&a);

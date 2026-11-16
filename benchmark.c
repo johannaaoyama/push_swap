@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 11:08:28 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/16 09:57:51 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/16 16:55:57 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,31 @@ static void	put_op(const char *name, int n, char sep)
 	write(2, &sep, 1);
 }
 
+static void	put_strategy(t_bench *b)
+{
+	put_str("[bench] strategy: ");
+	if (b->adaptive)
+		put_str("Adaptive");
+	else if (b->strategy == 1)
+		put_str("Simple");
+	else if (b->strategy == 2)
+		put_str("Medium");
+	else
+		put_str("Complex");
+	if (b->strategy == 1)
+		put_str(" / O(n²)");
+	else if (b->strategy == 2)
+		put_str(" / O(n√n)");
+	else
+		put_str(" / O(n log n)");
+}
+
 void	print_bench(t_bench *b)
 {
 	put_str("[bench] disorder: ");
 	put_percent(b->disorder);
-	put_str("\n[bench] strategy: ");
-	put_str(b->strategy_name);
-	put_str(" / ");
-	put_str(b->complexity);
+	put_str("\n");
+	put_strategy(b);
 	put_str("\n[bench] total_ops: ");
 	ft_putnbr_fd(b->total_ops, 2);
 	put_str("\n[bench] ");
@@ -64,22 +81,3 @@ void	print_bench(t_bench *b)
 	put_op("rrr", b->rrr, '\n');
 }
 
-void	init_bench(t_bench *bench)
-{
-	bench->enabled = 0;
-	bench->disorder = 0.0;
-	bench->strategy_name = NULL;
-	bench->complexity = NULL;
-	bench->total_ops = 0;
-	bench->sa = 0;
-	bench->sb = 0;
-	bench->ss = 0;
-	bench->pa = 0;
-	bench->pb = 0;
-	bench->ra = 0;
-	bench->rb = 0;
-	bench->rr = 0;
-	bench->rra = 0;
-	bench->rrb = 0;
-	bench->rrr = 0;
-}

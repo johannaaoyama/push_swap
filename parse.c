@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 11:05:25 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/16 10:08:51 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/16 16:56:30 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,3 +79,4 @@ int	parse_and_validate(t_stack *a, int count, char **args)
 	}
 	return (1);
 }
+

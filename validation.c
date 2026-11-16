@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 10:25:07 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/16 10:07:51 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/16 16:55:54 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,24 @@ int	is_valid_int_len(char *str, int len)
 		i++;
 	}
 	return (1);
+}
+
+void	init_bench(t_bench *bench)
+{
+	bench->enabled = 0;
+	bench->adaptive = 0;
+	bench->strategy = 0;
+	bench->disorder = 0.0;
+	bench->total_ops = 0;
+	bench->sa = 0;
+	bench->sb = 0;
+	bench->ss = 0;
+	bench->pa = 0;
+	bench->pb = 0;
+	bench->ra = 0;
+	bench->rb = 0;
+	bench->rr = 0;
+	bench->rra = 0;
+	bench->rrb = 0;
+	bench->rrr = 0;
 }

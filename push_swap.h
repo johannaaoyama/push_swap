@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:22:02 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/16 10:09:43 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/16 16:56:51 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ typedef struct s_node
 typedef struct s_bench
 {
 	int		enabled;
+	int		adaptive;
+	int		strategy;
 	double	disorder;
-	char	*strategy_name;
-	char	*complexity;
 	int		total_ops;
 	int		sa;
 	int		sb;
@@ -74,6 +74,8 @@ void	stack_clear(t_stack *x);
 
 // disorder.c
 double	compute_disorder(t_stack *a);
+int	is_sorted(t_stack *a);
+int	pick_strategy(double disorder);
 
 // ops (operations) functions
 
@@ -114,7 +116,6 @@ int		is_valid_int_len(char *str, int len);
 
 // sorting algorithms
 void	chunk_sort(t_stack *a, t_stack *b);
-void	adaptive(t_stack *a, t_stack *b, t_bench *bench);
 void	radix_sort(t_stack *a, t_stack *b);
 
 // selection_sort.c

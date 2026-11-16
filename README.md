@@ -36,8 +36,6 @@ make re       # fclean + all
 
 The Makefile does not relink when nothing changed. No global variables are used.
 
-> **TODO:** if the bonus is implemented, document `make bonus` and the `checker` binary here (see the *Bonus* section at the end).
-
 ### Run
 
 ```
@@ -186,8 +184,6 @@ Subject targets: for 100 numbers < 2000 (pass), < 1500 (good), < 700 (excellent)
 
 `--medium` scales as expected: `ops / (n√n)` is 0.59 (n=100), 0.45 (n=500), 0.42 (n=1000) and 0.40 (n=2000).
 
-> **TODO:** re-run these measurements before submitting and update the table if your final code changed.
-
 Reproduce:
 
 ```bash
@@ -206,8 +202,6 @@ ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
 - **Memory:** run under `valgrind --leak-check=full` (or AddressSanitizer) with valid and invalid inputs: no leaks, no invalid accesses.
 - **Operations:** `rr`, `rrr` and `ss` print and count as a single operation.
 
-> **TODO:** list here any extra tests you ran.
-
 ## Project structure
 
 | File | Content |
@@ -221,18 +215,16 @@ ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
 | `assign_index.c` | rank normalization (merge sort + binary search) |
 | `sort_medium.c` | chunk sort (medium strategy) |
 | `radix_sort.c` | LSD radix sort (complex strategy) |
-| `adaptive.c` | regime selection and adaptive strategy |
+| `disorder.c` | disorder metric and osrterd check |
 | `benchmark.c` | `--bench` counters and report |
 
 ## Contributions
 
 Based on the repository history; adjust it if you want to be more precise.
 
-- **jaoyama:** doubly linked list (`dll.c`); rank normalization with merge sort (`assign_index.c`); radix sort (`radix_sort.c`); adaptive strategy and disorder-based regime selection (`adaptive.c`); project structure of `push_swap.c` / `push_swap.h`; README.
+- **jaoyama:** doubly linked list (`dll.c`); rank normalization with merge sort (`assign_index.c`); radix sort (`radix_sort.c`); adaptive strategy and disorder-based regime selection (`herlper_functions.c`); project structure of `push_swap.c` / `push_swap.h`; README.
 - **keklein:** the 11 operations (`swap_ops.c`, `push_ops.c`, `rotate_ops.c`, `reverse_ops.c`); argument parsing and validation (`parse.c`, `validation.c`, `helper_functions.c`); selection sort; chunk sort (`sort_medium.c`); disorder metric; benchmark mode (`benchmark.c`); Makefile.
 - **Both:** `push_swap.c` / `push_swap.h`, testing, norm cleanup, algorithm review. Both of us reviewed and can explain every algorithm in this repository.
-
-> **TODO:** confirm this split is accurate for both of you.
 
 ## Resources
 
@@ -246,8 +238,6 @@ Based on the repository history; adjust it if you want to be more precise.
 
 **How AI was used**
 
-> **TODO:** edit this section so it describes exactly what *you* did with AI. The text below is a draft based on the assistance used during the project; remove or change anything that does not match, and keep the rule of the AI instructions: only keep what you fully understand and can explain.
-
 We used an AI assistant (Claude, by Anthropic) as support, never as a replacement for understanding:
 
 - **Planning:** splitting the work between the two of us and ordering the tasks by day.
@@ -258,7 +248,3 @@ We used an AI assistant (Claude, by Anthropic) as support, never as a replacemen
 - **Documentation:** a first draft of this README.
 
 Every suggestion was read, tested and discussed between both of us before being kept; we ran the checker, the norm and the memory tools on the final code.
-
-## Bonus
-
-> **TODO:** if you implement the `checker`, describe it here (files `*_bonus.c` / `*_bonus.h`, `make bonus`, behaviour: prints `OK` / `KO` on `stdout`, `Error` on `stderr`). If you do not implement it, delete this section.

@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 08:55:28 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/16 09:55:09 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/16 15:26:45 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,20 @@ double	compute_disorder(t_stack *a)
 		cur = cur->next;
 	}
 	return ((double)mistakes / (double)pairs);
+}
+
+int	is_sorted(t_stack *a)
+{
+	t_node	*current;
+
+	if (!a || !a->head)
+		return (1);
+	current = a->head;
+	while (current->next)
+	{
+		if (current->value > current->next->value)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }

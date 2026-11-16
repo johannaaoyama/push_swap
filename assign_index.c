@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/14 12:10:30 by johannaaoya       #+#    #+#             */
-/*   Updated: 2026/11/15 17:57:13 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/16 16:09:01 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	merge(int *arr, int *tmp, t_span s)
 
 static void	merge_sort(int *arr, int *tmp, size_t lo, size_t hi)
 {
-	t_span s;
+	t_span	s;
 
 	if (hi - lo < 2)
 		return ;

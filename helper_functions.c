@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 11:32:42 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/16 10:08:22 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/16 15:25:23 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,13 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(n / 10, fd);
 	c = (n % 10) + '0';
 	write(fd, &c, 1);
+}
+
+int	pick_strategy(double disorder)
+{
+	if (disorder < 0.2)
+		return (1);
+	if (disorder < 0.5)
+		return (2);
+	return (3);
 }
