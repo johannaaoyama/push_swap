@@ -155,8 +155,6 @@ The thresholds `0.2` and `0.5` are those required by the subject. Why they make 
 - **Below 0.2, fewer than a fifth of the pairs are inverted**: the list is mostly sorted, and the cheap O(n²) method (low overhead, simple) is acceptable.
 - **Between 0.2 and 0.5** the input is partly ordered, and chunk sort gives a middle ground with O(n√n) operations.
 
-`get_regime` is the single place where the thresholds live. It is used both to choose the algorithm and to build the strategy line printed by `--bench`, so the report always matches what actually ran.
-
 **Space.** In every regime: the two stacks (O(n) nodes) and, for the ranking, two temporary `int` arrays of size n (O(n)), freed immediately. The merge sort adds O(log n) of recursion depth.
 
 **Note on the benchmark.** Since random lists have disorder ≈ 0.5, they land roughly half of the time in the medium regime (chunk) and half in the high regime (radix). Both therefore have to meet the benchmark targets.

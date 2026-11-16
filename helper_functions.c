@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: johannaaoyama <johannaaoyama@student.42    +#+  +:+       +#+        */
+/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 11:32:42 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/14 22:33:56 by johannaaoya      ###   ########.fr       */
+/*   Updated: 2026/11/16 10:08:22 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,6 @@ size_t	ft_strlen(const char *s)
 		i++;
 	}
 	return (i);
-}
-
-long	ft_atol(const char *str)
-{
-	long	number;
-	int		sign;
-
-	sign = 1;
-	number = 0;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-	{
-		str++;
-	}
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		number = number * 10 + (*str - '0');
-		str++;
-	}
-	return (number * sign);
 }
 
 long	ft_atol_len(char *str, int len)

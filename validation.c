@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 10:25:07 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/15 18:00:33 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/16 10:07:51 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,6 @@ int	is_flag(char *s1, char *s2)
 	while (s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
 	return (s1[i] - s2[i]);
-}
-
-int	is_number(const char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	if (!str[i])
-		return (0);
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
 }
 
 int	has_duplicates(t_stack *a)
@@ -58,18 +40,6 @@ int	has_duplicates(t_stack *a)
 		current_node = current_node->next;
 	}
 	return (0);
-}
-
-int	is_valid_int(const char *str)
-{
-	long	num;
-
-	if (!is_number(str))
-		return (0);
-	num = ft_atol(str);
-	if (num > 2147483647 || num < -2147483648)
-		return (0);
-	return (1);
 }
 
 int	is_valid_int_len(char *str, int len)

@@ -6,7 +6,7 @@
 /*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:22:02 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/15 18:01:12 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/16 10:09:43 by kevin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,10 @@ double	compute_disorder(t_stack *a);
 
 // ops (operations) functions
 
-// swap the first two nodes
+// swap ops
 void	sa(t_stack *a);
 void	sb(t_stack *b);
+void	ss(t_stack *a, t_stack *b);
 
 // push element at top of b & put it at the top of a, do nothing if b is
 // empty. and vice versa.
@@ -103,21 +104,17 @@ void	assign_index(t_stack *a);
 // helper functions
 int		ft_isdigit(int digit);
 size_t	ft_strlen(const char *s);
-long	ft_atol(const char *str);
 long	ft_atol_len(char *str, int len);
 void	ft_putnbr_fd(int n, int fd);
 
 // validation
 int		is_flag(char *s1, char *s2);
-int		is_number(const char *str);
 int		has_duplicates(t_stack *a);
-int		is_valid_int(const char *str);
 int		is_valid_int_len(char *str, int len);
 
 // sorting algorithms
 void	chunk_sort(t_stack *a, t_stack *b);
 void	adaptive(t_stack *a, t_stack *b, t_bench *bench);
-int		get_regime(double disorder);
 void	radix_sort(t_stack *a, t_stack *b);
 
 // selection_sort.c
@@ -126,6 +123,5 @@ void	selection_sort(t_stack *a, t_stack *b);
 
 // Functions to parse by length
 int		parse_and_validate(t_stack *a, int count, char **args);
-void	ft_putstr_fd(char *s, int fd);
 
-#endif // PUSH_SWAP_H
+#endif
