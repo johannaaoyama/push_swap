@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   helper_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 11:32:42 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/16 15:25:23 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/18 15:21:07 by keklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	ft_isdigit(int digit)
-{
-	if (digit >= 48 && digit <= 57)
-		return (1);
-	return (0);
-}
 
 size_t	ft_strlen(const char *s)
 {

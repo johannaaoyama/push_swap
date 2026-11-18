@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by jaoyama and keklein.*
+*This project has been created as part of the 42 curriculum by jaoyama, keklein.*
 
 # push_swap
 
@@ -8,7 +8,7 @@
 
 `sa sb ss pa pb ra rb rr rra rrb rrr`
 
-**Overview.** This version of the project asks for more than one sorting method. The `push_swap` binary embeds four strategies, measures how disordered the input is, and can report its own statistics:
+**Overview.** The `push_swap` binary embeds four strategies, measures how disordered the input is, and can report its own statistics:
 
 | Flag | Strategy | Technique | Cost in Push_swap operations |
 |------|----------|-----------|------------------------------|
@@ -19,7 +19,7 @@
 
 An optional `--bench` flag prints the disorder, the strategy used, and the operation counts to `stderr`, without touching the operations printed on `stdout`.
 
-**Data structure.** Each stack is a doubly linked list that keeps `head`, `tail` and `size`. This makes every one of the 11 operations O(1) in time and O(1) in extra space (no shifting of elements), which is what lets us count cost in operations and not in memory moves.
+**Data structure.** Each stack is a doubly linked list that keeps `head`, `tail`, `bench` and `size`. This makes every one of the 11 operations O(1) in time and O(1) in extra space (no shifting of elements), which is what lets us count cost in operations and not in memory moves.
 
 ## Instructions
 
@@ -34,8 +34,6 @@ make fclean   # removes object files and the binary
 make re       # fclean + all
 ```
 
-The Makefile does not relink when nothing changed. No global variables are used.
-
 ### Run
 
 ```
@@ -43,18 +41,9 @@ The Makefile does not relink when nothing changed. No global variables are used.
 ```
 
 - The first number is the **top** of stack `a`.
-- Flags must come **before** the numbers. If several strategy flags are given, the last one wins. With no strategy flag, `--adaptive` is used.
-- Each operation is printed on `stdout`, followed by `\n`, and nothing else.
+- Flags must come **before** the numbers. With no strategy flag, `--adaptive` is used.
+- Each operation is printed on `stdout`, followed by `\n`.
 - With no arguments, the program prints nothing.
-
-```bash
-$ ./push_swap 2 1 3 6 5 8
-$ ./push_swap --simple 5 4 3 2 1
-$ ARG="4 67 3 87 23"; ./push_swap --complex $ARG | ./checker_linux $ARG
-OK
-$ ARG="4 67 3 87 23"; ./push_swap --bench --adaptive $ARG 2> bench.txt | ./checker_linux $ARG
-OK
-```
 
 ### Benchmark mode (`--bench`)
 
@@ -155,52 +144,10 @@ The thresholds `0.2` and `0.5` are those required by the subject. Why they make 
 
 **Space.** In every regime: the two stacks (O(n) nodes) and, for the ranking, two temporary `int` arrays of size n (O(n)), freed immediately. The merge sort adds O(log n) of recursion depth.
 
-**Note on the benchmark.** Since random lists have disorder ≈ 0.5, they land roughly half of the time in the medium regime (chunk) and half in the high regime (radix). Both therefore have to meet the benchmark targets.
-
 ### Limitations and possible improvements
 
-- Selection sort (low regime) does not exploit how sorted the input already is; an insertion-like method would be cheaper.
-- `rr`, `rrr` and `ss` are implemented and counted correctly, but the strategies do not yet combine independent rotations of `a` and `b` into them. Doing so would reduce the operation count.
 - The adaptive thresholds are fixed; they could be tuned experimentally.
 - Just above the small-input cutoff the high-disorder regime can cost more than selection sort (for n = 6 the worst case is 29 operations with radix against 21 with selection sort). A higher cutoff, or choosing by estimated cost, would improve it.
-
-## Performance
-
-Average over random permutations (5 runs per cell); all results were verified as sorted.
-
-| Strategy | n = 100 | n = 500 |
-|----------|---------|---------|
-| `--simple` | ~1,450 | ~32,000 |
-| `--medium` | ~570 | ~5,050 |
-| `--complex` | 1,084 | 6,784 |
-| default (adaptive) | ~570 or 1,084 | ~5,050 or 6,784 |
-
-Subject targets: for 100 numbers < 2000 (pass), < 1500 (good), < 700 (excellent); for 500 numbers < 12000 (pass), < 8000 (good), < 5500 (excellent).
-
-- 100 numbers: medium (~570) is in the *excellent* range and radix (1,084) in the *good* range.
-- 500 numbers: medium (~5,050) is in the *excellent* range and radix (6,784) in the *good* range.
-- The adaptive strategy picks one or the other depending on the list, so a random list lands in one of these two tiers.
-- `--simple` is a baseline and is not intended to meet the 500-number target.
-
-`--medium` scales as expected: `ops / (n√n)` is 0.59 (n=100), 0.45 (n=500), 0.42 (n=1000) and 0.40 (n=2000).
-
-Reproduce:
-
-```bash
-ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
-./push_swap $ARG | wc -l
-./push_swap $ARG | ./checker_linux $ARG
-./push_swap --bench $ARG > /dev/null
-```
-
-## Testing
-
-- **Correctness:** every strategy checked with the provided `checker_linux` on random lists of 5, 100, 500 numbers (and 1000+ for scaling), including negative values.
-- **Small inputs:** all permutations of 2 to 5 elements, for the adaptive strategy and for each forced flag.
-- **Errors:** letters, empty string `""`, duplicates, values outside `int` (e.g. `2147483648`, `-2147483649`), unknown flags, no arguments, flags only.
-- **Edge cases:** one element, already sorted list, reversed list.
-- **Memory:** run under `valgrind --leak-check=full` (or AddressSanitizer) with valid and invalid inputs: no leaks, no invalid accesses.
-- **Operations:** `rr`, `rrr` and `ss` print and count as a single operation.
 
 ## Project structure
 
@@ -212,6 +159,7 @@ ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
 | `parse.c`, `validation.c`, `helper_functions.c` | argument parsing and validation, small helpers |
 | `swap_ops.c`, `push_ops.c`, `rotate_ops.c`, `reverse_ops.c` | the 11 operations (print and count each one) |
 | `assign_index.c` | rank normalization (merge sort + binary search) |
+| `selection_sort.c` | selection sort (simple strategy) |
 | `sort_medium.c` | chunk sort (medium strategy) |
 | `radix_sort.c` | LSD radix sort (complex strategy) |
 | `disorder.c` | disorder metric and sorted check |
@@ -220,18 +168,17 @@ ARG=$(shuf -i 0-9999 -n 500 | tr '\n' ' ')
 ## Contributions
 
 - **jaoyama:** doubly linked list (`dll.c`); rank normalization with merge sort (`assign_index.c`); radix sort (`radix_sort.c`); adaptive strategy and disorder-based regime selection (`helper_functions.c`); project structure of `push_swap.c` / `push_swap.h`; README.
-- **keklein:** the 11 operations (`swap_ops.c`, `push_ops.c`, `rotate_ops.c`, `reverse_ops.c`); argument parsing and validation (`parse.c`, `validation.c`, `helper_functions.c`); selection sort; chunk sort (`sort_medium.c`); disorder metric; benchmark mode (`benchmark.c`); Makefile.
-- **Both:** `push_swap.c` / `push_swap.h`, testing, norm cleanup, algorithm review. Both of us reviewed and can explain every algorithm in this repository.
+- **keklein:** the 11 operations (`swap_ops.c`, `push_ops.c`, `rotate_ops.c`, `reverse_ops.c`); argument parsing and validation (`parse.c`, `validation.c`, `helper_functions.c`); selection sort; chunk sort (`sort_medium.c`); disorder metric; benchmark mode (`benchmark.c`).
+- **Both:** `push_swap.c` / `push_swap.h`, Makefile, testing, norm cleanup, algorithm review. Both of us reviewed and can explain every algorithm in this repository.
 
 ## Resources
 
 **References**
 
-- Donald Knuth, *The Art of Computer Programming, Vol. 3: Sorting and Searching*.
-- GeeksforGeeks: Deque data structure; Implementation of a deque using a doubly linked list; Selection sort; Radix sort (LSD and MSD); Merge sort; Quick sort; Introduction to Max-Heap.
+- GeeksforGeeks: Deque data structure; Implementation of a deque using a doubly linked list; Selection sort; Radix sort (LSD and MSD); Merge sort; Quick sort; Introduction to Max-Heap; bitwise operators.
 - Wikipedia: Big O notation; Inversion (discrete mathematics); Kendall tau distance (the disorder metric counts inversions).
 - 42 peers: discussions and peer reviews about operation counting, chunk sizes and norm issues.
-- `man` pages: `read`, `write`, `malloc`, `free`, `exit`; `norminette` documentation.
+- `man` pages: `read`, `write`, `malloc`, `free` documentation.
 
 **How AI was used**
 
@@ -241,7 +188,7 @@ We used an AI assistant (Claude, by Anthropic) as support, never as a replacemen
 - **Code review:** finding Norm problems, functions that were never called, `gcc`-specific compilation errors (`-Wmisleading-indentation`), and the malformed output of `rr` / `rrr` / `ss`.
 - **`--bench` output:** checking the expected format against the subject and suggesting how to structure the counters and the printing without `printf` or global variables.
 - **Chunk size:** measuring how the operation count scales and suggesting a window proportional to √n instead of a fixed size.
-- **Testing:** helper scripts (a Python checker of operation sequences and benchmark runs) to test all permutations of small inputs and measure averages.
+- **Testing:** understanding how to use helper scripts and run testers.
 - **Documentation:** a first draft of this README.
 
-Every suggestion was read, tested and discussed between both of us before being kept; we ran the checker, the norm and the memory tools on the final code.
+Every suggestion was read, tested and discussed between both of us before being kept; we ran the checker, the memory tools and the 42 norminette on the final code.

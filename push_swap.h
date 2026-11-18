@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:22:02 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/16 16:56:51 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/18 15:21:06 by keklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	stack_clear(t_stack *x);
 
 // disorder.c
 double	compute_disorder(t_stack *a);
-int	is_sorted(t_stack *a);
-int	pick_strategy(double disorder);
+int		is_sorted(t_stack *a);
+int		pick_strategy(double disorder);
 
 // ops (operations) functions
 
@@ -104,7 +104,6 @@ void	rrr(t_stack *a, t_stack *b);
 void	assign_index(t_stack *a);
 
 // helper functions
-int		ft_isdigit(int digit);
 size_t	ft_strlen(const char *s);
 long	ft_atol_len(char *str, int len);
 void	ft_putnbr_fd(int n, int fd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 11:05:25 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/16 19:15:33 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/18 11:53:41 by keklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,3 @@ int	parse_and_validate(t_stack *a, int count, char **args)
 	}
 	return (1);
 }
-

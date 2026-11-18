@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   benchmark.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/13 11:08:28 by kevin             #+#    #+#             */
-/*   Updated: 2026/11/16 16:55:57 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/18 11:53:11 by keklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,3 @@ void	print_bench(t_bench *b)
 	put_op("rrb", b->rrb, ' ');
 	put_op("rrr", b->rrr, '\n');
 }
-

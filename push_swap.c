@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kevin <kevin@student.42.fr>                +#+  +:+       +#+        */
+/*   By: keklein <keklein@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/25 18:23:04 by jaoyama           #+#    #+#             */
-/*   Updated: 2026/11/16 16:42:59 by kevin            ###   ########.fr       */
+/*   Updated: 2026/11/18 15:16:49 by keklein          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	main(int argc, char **argv)
 	set_strategy(&bench, strategy);
 	if (!is_sorted(&a))
 		execute_strategy(&a, &b, &bench);
-	if (bench.enabled)
+	if (bench.enabled && argc > 2)
 		print_bench(&bench);
 	stack_clear(&a);
 	stack_clear(&b);
